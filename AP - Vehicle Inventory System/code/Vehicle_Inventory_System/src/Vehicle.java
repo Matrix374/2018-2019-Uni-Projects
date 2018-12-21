@@ -1,3 +1,9 @@
+/**
+ * This is class that creates Vehicles from the VehiclesDAO class
+ * 
+ * @author Irfan_Hanafi
+ *
+ */
 
 public class Vehicle {
 	private int vehicle_id;
@@ -146,7 +152,21 @@ public class Vehicle {
 	
 	public String toString()
 	{
-		//Insert toString Code here
-		return null;
+		String s = "Vehicle ID = " + this.vehicle_id + '\n' + 
+				"Make = " + this.make + '\n' +
+				"Model = " + this.model + '\n' +
+				"Year = " + this.year + '\n' +
+				"Price = " + this.price + '\n' +
+				"License Number = " + this.license_number + '\n' +
+				"Colour = " + this.colour + '\n' +
+				"Number Doors = " + this.number_doors + '\n' +
+				"Transmission = " + this.transmission + '\n' +
+				"Mileage = " + this.mileage + '\n' +
+				"Fuel Type = " + this.fuel_type + '\n' +
+				"Engine Size = " + this.engine_size + '\n' +
+				"Body Style = " + this.body_style + '\n' +
+				"Condition = " + this.condition + '\n' +
+				"Notes = " + this.notes;
+		return s;
 	}
 }
