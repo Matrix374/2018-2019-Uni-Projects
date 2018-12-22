@@ -1,5 +1,5 @@
 /**
- * This is the connection to the SQL database
+ * Establishes connection to the database and retrieves, updates or deletes data from the databse.
  * 
  * @author Irfan_Hanafi
  *

@@ -1,5 +1,5 @@
 /**
- * This is class that creates Vehicles from the VehiclesDAO class
+ * This is class that stores vehicle data from the VehiclesDAO class
  * 
  * @author Irfan_Hanafi
  *

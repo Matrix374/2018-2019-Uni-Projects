@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.sql.SQLException;
-
 /**
  * This is the main method of the system
  * 
@@ -8,6 +5,10 @@ import java.sql.SQLException;
  * @version 0.2
  *
  */
+
+import java.util.ArrayList;
+import java.sql.SQLException;
+
 public class Controller {
 
 	public static void main(String[] args) throws SQLException {
