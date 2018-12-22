@@ -27,7 +27,22 @@ public class Vehicle {
 			number_doors, String transmission, int mileage, String fuel_type,
 			int engine_size, String body_style, String condition, String
 			notes) {
-			//Initialise instance variables here..
+				this.setVehicle_id(vehicle_id);
+				this.setMake(make);
+				this.setModel(model);
+				this.setYear(year);
+				this.setPrice(price);
+				this.setLicense_number(license_number);
+				this.setColour(colour);
+				this.setNumber_doors(number_doors);
+				this.setTransmission(transmission);
+				this.setMileage(mileage);
+				this.setFuel_type(fuel_type);
+				this.setEngine_size(engine_size);
+				this.setBody_style(body_style);
+				this.setCondition(condition);
+				this.setNotes(notes);
+			
 			}
 
 	public int getVehicle_id() {
