@@ -80,4 +80,29 @@ public class VehicleDAO {
 		
 		return vehicleList;
 	}
+
+
+	public Vehicle getVehicle(int vehicle_id)
+	{
+		//InsertCode
+		return null;
+	}
+	
+	public Boolean deleteVehicle(int vehicle_id)
+	{
+		//InsertCode
+		return null;
+	}
+	
+	public Boolean insertVehicle(Vehicle v)
+	{
+		//InsertCode
+		return null;
+	}
+	
+	public Boolean updateVehicle(Vehicle v, int vehicle_id)
+	{
+		//InsertCode
+		return null;
+	}
 }
