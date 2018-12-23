@@ -22,12 +22,16 @@ public class Controller {
 			switch(choice)
 			{
 				case 1: allVehicles();
-				break;
+					break;
 				case 2: searchVehicle();
-				break;
+					break;
+				case 5: deleteVehicle();
+					break;
 				case 6: exit = true;
-				break;
+					break;
 			}
+			
+			System.out.println("");
 		}
 		
 		System.out.println("Exiting...");
@@ -79,6 +83,18 @@ public class Controller {
 		
 		System.out.println("--------------------");
 		System.out.println(v);
+	}
+	
+	public static void deleteVehicle() throws SQLException
+	{
+		System.out.print("Enter Vehicle ID > ");
+		int vehicle_id = in.nextInt();
+		System.out.println("");
+		
+		VehicleDAO dao = new VehicleDAO();
+		
+		Boolean state = null;
+		state = dao.deleteVehicle(vehicle_id);
 	}
 
 }

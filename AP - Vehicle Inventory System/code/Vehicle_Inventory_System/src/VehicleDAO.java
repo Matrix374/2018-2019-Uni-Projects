@@ -84,7 +84,6 @@ public class VehicleDAO {
 
 	public Vehicle getVehicle(int vehicle_id) throws SQLException
 	{
-		//InsertCode
 		System.out.print("Retrieving vehicle " + vehicle_id + "...");
 		Connection dbConnection = null;
 		Statement statement = null;
@@ -125,10 +124,27 @@ public class VehicleDAO {
 		return temp;
 	}
 	
-	public Boolean deleteVehicle(int vehicle_id)
+	public Boolean deleteVehicle(int vehicle_id) throws SQLException
 	{
-		//InsertCode
-		return null;
+		Boolean attempt = false;
+		System.out.print("Deleting vehicle " + vehicle_id + "...");
+		Connection dbConnection = null;
+		Statement statement = null;
+		String query = "DELETE FROM vehicles where vehicle_id = " + vehicle_id + ";";
+		
+		try {
+			dbConnection = getDBConnection();
+			statement = dbConnection.createStatement();
+			System.out.println("DBQuery = " + query);
+			attempt = statement.execute(query);
+			
+		} catch(SQLException e){
+			System.out.println(e.getMessage());
+		} finally {
+			if (statement != null) { statement.close(); }
+			if (dbConnection != null) { dbConnection.close(); }
+		}
+		return attempt;
 	}
 	
 	public Boolean insertVehicle(Vehicle v)
