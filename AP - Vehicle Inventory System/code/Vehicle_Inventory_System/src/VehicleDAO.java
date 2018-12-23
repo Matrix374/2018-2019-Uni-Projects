@@ -82,10 +82,47 @@ public class VehicleDAO {
 	}
 
 
-	public Vehicle getVehicle(int vehicle_id)
+	public Vehicle getVehicle(int vehicle_id) throws SQLException
 	{
 		//InsertCode
-		return null;
+		System.out.print("Retrieving vehicle " + vehicle_id + "...");
+		Connection dbConnection = null;
+		Statement statement = null;
+		ResultSet result = null;
+		String query = "Select * FROM vehicles where vehicle_id = " + vehicle_id + ";";
+		Vehicle temp = null;
+		
+		try {
+			dbConnection = getDBConnection();
+			statement = dbConnection.createStatement();
+			System.out.println("DBQuery = " + query);
+			result = statement.executeQuery(query);
+			
+			String make = result.getString("make");
+			String model = result.getString("model");
+			int year = result.getInt("year");
+			int price = result.getInt("price");
+			String license_number = result.getString("license_number");
+			String colour = result.getString("colour");
+			int number_doors = result.getInt("number_doors");
+			String transmission = result.getString("transmission");
+			int mileage = result.getInt("mileage");
+			String fuel_type = result.getString("fuel_type");
+			int engine_size = result.getInt("engine_size");
+			String body_style = result.getString("body_style");
+			String condition = result.getString("condition");
+			String notes = result.getString("notes");
+			
+			temp = new Vehicle(vehicle_id, make, model, year, price, 
+					license_number, colour, number_doors, transmission, mileage,
+					fuel_type, engine_size, body_style, condition, notes);
+		} finally {
+			if (result != null) { result.close(); }
+			if (statement != null) { statement.close(); }
+			if (dbConnection != null) { dbConnection.close(); }
+		}
+		
+		return temp;
 	}
 	
 	public Boolean deleteVehicle(int vehicle_id)
