@@ -147,10 +147,32 @@ public class VehicleDAO {
 		return attempt;
 	}
 	
-	public Boolean insertVehicle(Vehicle v)
+	public Boolean insertVehicle(Vehicle v) throws SQLException
 	{
-		//InsertCode
-		return null;
+		Boolean attempt = false;
+		System.out.print("inserting vehicle...");
+		Connection dbConnection = null;
+		Statement statement = null;
+		String query = "INSERT INTO vehicles(vehicle_id, make, model, year, price, "
+				+ "license_number, colour, number_doors, transmission, mileage, "
+				+ "fuel_type, engine_size, body_style, condition, notes) VALUES(" + v.getVehicle_id() + "," + "\"" + v.getMake() + "\"" + "," 
+				+ "\"" + v.getModel() + "\"" + "," + v.getYear() + "," + v.getPrice() + "," + "\"" + v.getLicense_number() + "\""
+				+ "," + "\"" + v.getColour() + "\"" + "," + v.getNumber_doors() + "," + "\"" + v.getTransmission() + "\"" + "," + v.getMileage() 
+				+ "," + "\"" + v.getFuel_type() + "\"" + "," + v.getEngine_size() + "," + "\"" + v.getBody_style() + "\"" + "," + "\""+ v.getCondition() + "\"" + "," + "\"" + v.getNotes() + "\"" + ");";
+		
+		try {
+			dbConnection = getDBConnection();
+			statement = dbConnection.createStatement();
+			System.out.println("DBQuery = " + query);
+			attempt = statement.execute(query);
+			
+		} catch(SQLException e){
+			System.out.println(e.getMessage());
+		} finally {
+			if (statement != null) { statement.close(); }
+			if (dbConnection != null) { dbConnection.close(); }
+		}
+		return attempt;
 	}
 	
 	public Boolean updateVehicle(Vehicle v, int vehicle_id)

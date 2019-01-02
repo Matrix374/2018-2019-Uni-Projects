@@ -25,6 +25,8 @@ public class Controller {
 					break;
 				case 2: searchVehicle();
 					break;
+				case 3: insertVehicle();
+					break;
 				case 5: deleteVehicle();
 					break;
 				case 6: exit = true;
@@ -93,8 +95,90 @@ public class Controller {
 		
 		VehicleDAO dao = new VehicleDAO();
 		
-		Boolean state = null;
+		boolean state = false;
 		state = dao.deleteVehicle(vehicle_id);
+	}
+	
+	public static void insertVehicle() throws SQLException
+	{
+		VehicleDAO dao = new VehicleDAO();
+		
+		System.out.print("Enter Vehicle ID > "); //Possibly Redundant
+		int vehicle_id = in.nextInt();
+		System.out.println("");
+		
+		in.nextLine();
+		
+		System.out.print("Enter Make > ");
+		String make = in.nextLine();
+		System.out.println("");
+		
+		System.out.print("Enter Model > ");
+		String model = in.nextLine();
+		System.out.println("");
+		
+		System.out.print("Enter Year > ");
+		int year = in.nextInt();
+		System.out.println("");
+		
+		System.out.print("Enter Price > ");
+		int price = in.nextInt();
+		System.out.println("");
+		
+		in.nextLine();
+		
+		System.out.print("Enter License Number > ");
+		String license_number = in.nextLine();
+		System.out.println("");
+		
+		System.out.print("Enter Colour > ");
+		String colour = in.nextLine();
+		System.out.println("");
+		
+		System.out.print("Enter Number of Doors > ");
+		int number_doors = in.nextInt();
+		System.out.println("");
+		
+		in.nextLine();
+		
+		System.out.print("Enter Transmission > ");
+		String transmission = in.nextLine();
+		System.out.println("");
+		
+		System.out.print("Enter Mileage > ");
+		int mileage = in.nextInt();
+		System.out.println("");
+		
+		in.nextLine();
+		
+		System.out.print("Enter Fuel Type > ");
+		String fuel_type = in.nextLine();
+		System.out.println("");
+		
+		System.out.print("Enter Engine Size > ");
+		int engine_size = in.nextInt();
+		System.out.println("");
+		
+		in.nextLine();
+		
+		System.out.print("Enter Body Style > ");
+		String body_style = in.nextLine();
+		System.out.println("");
+		
+		System.out.print("Enter Condition > ");
+		String condition = in.nextLine();
+		System.out.println("");
+		
+		System.out.print("Enter Notes > ");
+		String notes = in.nextLine();
+		System.out.println("");
+		
+		Vehicle temp = new Vehicle(vehicle_id, make, model, year, price, 
+				license_number, colour, number_doors, transmission, mileage,
+				fuel_type, engine_size, body_style, condition, notes);
+		
+		boolean state = false;
+		state = dao.insertVehicle(temp);
 	}
 
 }
