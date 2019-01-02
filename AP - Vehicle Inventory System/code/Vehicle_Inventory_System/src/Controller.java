@@ -29,6 +29,8 @@ public class Controller {
 					break;
 				case 5: deleteVehicle();
 					break;
+				case 4: updateVehicle();
+					break;
 				case 6: exit = true;
 					break;
 			}
@@ -179,6 +181,69 @@ public class Controller {
 		
 		boolean state = false;
 		state = dao.insertVehicle(temp);
+	}
+	
+	public static void updateVehicle()
+	{
+		System.out.println("--------------------");
+		System.out.print("Choose Car to Update:\nEnter Vehicle ID > ");
+		int vehicle_id = in.nextInt();
+		System.out.println("--------------------");
+		System.out.println("Choose Data to Update");
+		System.out.println("--------------------");
+		System.out.println("1 - Make");
+		System.out.println("2 - Model");
+		System.out.println("3 - Year");
+		System.out.println("4 - Price");
+		System.out.println("5 - License Number");
+		System.out.println("6 - Colour");
+		System.out.println("7 - Number of Doors");
+		System.out.println("8 - Transmission");
+		System.out.println("9 - Mileage");
+		System.out.println("10 - Fuel Type");
+		System.out.println("11 - Engine Size");
+		System.out.println("12 - Body Style");
+		System.out.println("13 - Condition");
+		System.out.println("14 - Notes");
+		System.out.println("15 - Exit");
+		
+		System.out.print("Enter choice > ");
+		int choice = in.nextInt();
+		System.out.println("");
+		
+		switch(choice)
+		{
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+			case 9:
+				break;
+			case 10:
+				break;
+			case 11:
+				break;
+			case 12:
+				break;
+			case 13:
+				break;
+			case 14:
+				break;
+			case 15: menu();
+				break;
+		}
 	}
 
 }
