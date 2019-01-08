@@ -1,8 +1,9 @@
 /**
  * This is the main method of the system
+ * Console Testing is all done here
  * 
  * @author Irfan_Hanafi
- * @version 0.2
+ * @version 1.0
  *
  */
 
@@ -54,11 +55,12 @@ public class Controller {
 		System.out.println("5 - Delete vehicle from database");
 		System.out.println("6 - Exit");
 		System.out.print("Enter choice > ");
-		int choice = in.nextInt();
+		int choice = Integer.parseInt(in.nextLine());
 		return choice;
 		
 	}
 	
+	//Prints All Vehicles
 	public static void allVehicles() throws SQLException
 	{
 		VehicleDAO dao = new VehicleDAO();
@@ -74,10 +76,11 @@ public class Controller {
 		}
 	}
 	
+	//Gets Specific Vehicle
 	public static void searchVehicle() throws SQLException
 	{
 		System.out.print("Enter Vehicle ID > ");
-		int vehicle_id = in.nextInt();
+		int vehicle_id = Integer.parseInt(in.nextLine());
 		System.out.println("");
 		
 		VehicleDAO dao = new VehicleDAO();
@@ -89,10 +92,11 @@ public class Controller {
 		System.out.println(v);
 	}
 	
+	//Removes Vehicle
 	public static void deleteVehicle() throws SQLException
 	{
 		System.out.print("Enter Vehicle ID > ");
-		int vehicle_id = in.nextInt();
+		int vehicle_id = Integer.parseInt(in.nextLine());
 		System.out.println("");
 		
 		VehicleDAO dao = new VehicleDAO();
@@ -101,11 +105,12 @@ public class Controller {
 		state = dao.deleteVehicle(vehicle_id);
 	}
 	
+	//Inserts new Vehicle
 	public static void insertVehicle() throws SQLException
 	{
 		VehicleDAO dao = new VehicleDAO();
 	
-		int vehicle_id = 1;
+		int vehicle_id = 1; //vehicle_id doesn't matter because the SQL database will auto-increment the ID
 		
 		System.out.print("Enter Make > ");
 		String make = in.nextLine();
@@ -116,14 +121,12 @@ public class Controller {
 		System.out.println("");
 		
 		System.out.print("Enter Year > ");
-		int year = in.nextInt();
+		int year = Integer.parseInt(in.nextLine());
 		System.out.println("");
 		
 		System.out.print("Enter Price > ");
-		int price = in.nextInt();
+		int price = Integer.parseInt(in.nextLine());
 		System.out.println("");
-		
-		in.nextLine();
 		
 		System.out.print("Enter License Number > ");
 		String license_number = in.nextLine();
@@ -134,30 +137,24 @@ public class Controller {
 		System.out.println("");
 		
 		System.out.print("Enter Number of Doors > ");
-		int number_doors = in.nextInt();
+		int number_doors = Integer.parseInt(in.nextLine());
 		System.out.println("");
-		
-		in.nextLine();
 		
 		System.out.print("Enter Transmission > ");
 		String transmission = in.nextLine();
 		System.out.println("");
 		
 		System.out.print("Enter Mileage > ");
-		int mileage = in.nextInt();
+		int mileage = Integer.parseInt(in.nextLine());
 		System.out.println("");
-		
-		in.nextLine();
 		
 		System.out.print("Enter Fuel Type > ");
 		String fuel_type = in.nextLine();
 		System.out.println("");
 		
 		System.out.print("Enter Engine Size > ");
-		int engine_size = in.nextInt();
+		int engine_size = Integer.parseInt(in.nextLine());
 		System.out.println("");
-		
-		in.nextLine();
 		
 		System.out.print("Enter Body Style > ");
 		String body_style = in.nextLine();
@@ -210,41 +207,87 @@ public class Controller {
 		
 		System.out.print("Enter choice > ");
 		int choice = in.nextInt();
+		in.nextLine();
 		System.out.println("");
+		String temp = null;
 		
 		switch(choice)
 		{
-			case 1: v.setMake(in.nextLine());
+			case 1:
+				System.out.print("Enter Make > ");
+				temp = in.nextLine();
+				v.setMake(temp);
 				break;
-			case 2:v.setModel(in.nextLine());
+			case 2:
+				System.out.print("Enter Model > ");
+				temp = in.nextLine();
+				v.setModel(temp);
 				break;
-			case 3:v.setYear(in.nextInt());
+			case 3:
+				System.out.print("Enter Year > ");
+				temp = in.nextLine();
+				v.setYear(Integer.parseInt(temp));
 				break;
 			case 4:
+				System.out.print("Enter Price > ");
+				temp = in.nextLine();
+				v.setPrice(Integer.parseInt(temp));
 				break;
 			case 5:
+				System.out.print("Enter License Number > ");
+				temp = in.nextLine();
+				v.setLicense_number(temp);
 				break;
 			case 6:
+				System.out.print("Enter Colour > ");
+				temp = in.nextLine();
+				v.setColour(temp);
 				break;
 			case 7:
+				System.out.print("Enter Number of Doors > ");
+				temp = in.nextLine();
+				v.setNumber_doors(Integer.parseInt(temp));
 				break;
 			case 8:
+				System.out.print("Enter Transmission > ");
+				temp = in.nextLine();
+				v.setTransmission(temp);
 				break;
 			case 9:
+				System.out.print("Enter Mileage > ");
+				temp = in.nextLine();
+				v.setMileage(Integer.parseInt(temp));
 				break;
 			case 10:
+				System.out.print("Enter Fuel Type > ");
+				temp = in.nextLine();
+				v.setFuel_type(temp);
 				break;
 			case 11:
+				System.out.print("Enter Engine Size > ");
+				temp = in.nextLine();
+				v.setEngine_size(Integer.parseInt(temp));
 				break;
 			case 12:
+				System.out.print("Enter Body Style > ");
+				temp = in.nextLine();
+				v.setBody_style(temp);
 				break;
 			case 13:
+				System.out.print("Enter Condition > ");
+				temp = in.nextLine();
+				v.setCondition(temp);
 				break;
 			case 14:
+				System.out.print("Enter Notes > ");
+				temp = in.nextLine();
+				v.setNotes(temp);
 				break;
 			case 15: menu();
 				break;
 		}
+		
+		dao.updateVehicle(v, vehicle_id);
 	}
 
 }
