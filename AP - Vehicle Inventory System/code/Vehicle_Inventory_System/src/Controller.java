@@ -9,6 +9,10 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import models.Vehicle;
+import models.VehicleDAO;
+
 import java.sql.SQLException;
 
 public class Controller {
@@ -101,7 +105,7 @@ public class Controller {
 		
 		VehicleDAO dao = new VehicleDAO();
 		
-		System.out.println("Delete Vehicle Test = " + dao.deleteVehicle(vehicle_id));
+		dao.deleteVehicle(vehicle_id);
 	}
 	
 	//Inserts new Vehicle
@@ -171,7 +175,7 @@ public class Controller {
 				license_number, colour, number_doors, transmission, mileage,
 				fuel_type, engine_size, body_style, condition, notes);
 		
-		System.out.println("Insert Vehicle Test = " + dao.insertVehicle(temp));
+		dao.insertVehicle(temp);
 	}
 	
 	public static void updateVehicle() throws SQLException
@@ -285,7 +289,7 @@ public class Controller {
 				break;
 		}
 		
-		System.out.println("Update Vehicle Test = " + dao.updateVehicle(v, vehicle_id));
+		dao.updateVehicle(v, vehicle_id);
 	}
 
 }
