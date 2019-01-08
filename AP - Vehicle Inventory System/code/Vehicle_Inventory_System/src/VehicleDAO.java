@@ -153,9 +153,9 @@ public class VehicleDAO {
 		System.out.print("inserting vehicle...");
 		Connection dbConnection = null;
 		Statement statement = null;
-		String query = "INSERT INTO vehicles(vehicle_id, make, model, year, price, "
+		String query = "INSERT INTO vehicles(make, model, year, price, "
 				+ "license_number, colour, number_doors, transmission, mileage, "
-				+ "fuel_type, engine_size, body_style, condition, notes) VALUES(" + v.getVehicle_id() + "," + "\"" + v.getMake() + "\"" + "," 
+				+ "fuel_type, engine_size, body_style, condition, notes) VALUES( \"" + v.getMake() + "\"" + "," 
 				+ "\"" + v.getModel() + "\"" + "," + v.getYear() + "," + v.getPrice() + "," + "\"" + v.getLicense_number() + "\""
 				+ "," + "\"" + v.getColour() + "\"" + "," + v.getNumber_doors() + "," + "\"" + v.getTransmission() + "\"" + "," + v.getMileage() 
 				+ "," + "\"" + v.getFuel_type() + "\"" + "," + v.getEngine_size() + "," + "\"" + v.getBody_style() + "\"" + "," + "\""+ v.getCondition() + "\"" + "," + "\"" + v.getNotes() + "\"" + ");";

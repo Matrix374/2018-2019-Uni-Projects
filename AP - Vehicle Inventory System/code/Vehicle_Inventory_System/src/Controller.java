@@ -104,12 +104,8 @@ public class Controller {
 	public static void insertVehicle() throws SQLException
 	{
 		VehicleDAO dao = new VehicleDAO();
-		
-		System.out.print("Enter Vehicle ID > "); //Possibly Redundant
-		int vehicle_id = in.nextInt();
-		System.out.println("");
-		
-		in.nextLine();
+	
+		int vehicle_id = 1;
 		
 		System.out.print("Enter Make > ");
 		String make = in.nextLine();
@@ -183,11 +179,16 @@ public class Controller {
 		state = dao.insertVehicle(temp);
 	}
 	
-	public static void updateVehicle()
+	public static void updateVehicle() throws SQLException
 	{
+		VehicleDAO dao = new VehicleDAO();
+		
 		System.out.println("--------------------");
 		System.out.print("Choose Car to Update:\nEnter Vehicle ID > ");
 		int vehicle_id = in.nextInt();
+		Vehicle v = null;
+		v = dao.getVehicle(vehicle_id);
+		
 		System.out.println("--------------------");
 		System.out.println("Choose Data to Update");
 		System.out.println("--------------------");
@@ -213,11 +214,11 @@ public class Controller {
 		
 		switch(choice)
 		{
-			case 1:
+			case 1: v.setMake(in.nextLine());
 				break;
-			case 2:
+			case 2:v.setModel(in.nextLine());
 				break;
-			case 3:
+			case 3:v.setYear(in.nextInt());
 				break;
 			case 4:
 				break;
