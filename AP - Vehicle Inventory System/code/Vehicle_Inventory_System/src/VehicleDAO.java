@@ -1,5 +1,5 @@
 /**
- * Establishes connection to the database and retrieves, updates or deletes data from the databse.
+ * Establishes connection to the database and retrieves, updates or deletes data from the database.
  * 
  * @author Irfan_Hanafi
  *
