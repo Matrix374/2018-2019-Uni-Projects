@@ -101,8 +101,7 @@ public class Controller {
 		
 		VehicleDAO dao = new VehicleDAO();
 		
-		boolean state = false;
-		state = dao.deleteVehicle(vehicle_id);
+		System.out.println("Delete Vehicle Test = " + dao.deleteVehicle(vehicle_id));
 	}
 	
 	//Inserts new Vehicle
@@ -172,8 +171,7 @@ public class Controller {
 				license_number, colour, number_doors, transmission, mileage,
 				fuel_type, engine_size, body_style, condition, notes);
 		
-		boolean state = false;
-		state = dao.insertVehicle(temp);
+		System.out.println("Insert Vehicle Test = " + dao.insertVehicle(temp));
 	}
 	
 	public static void updateVehicle() throws SQLException
@@ -287,7 +285,7 @@ public class Controller {
 				break;
 		}
 		
-		dao.updateVehicle(v, vehicle_id);
+		System.out.println("Update Vehicle Test = " + dao.updateVehicle(v, vehicle_id));
 	}
 
 }
