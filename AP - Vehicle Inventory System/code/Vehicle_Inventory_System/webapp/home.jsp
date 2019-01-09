@@ -14,14 +14,14 @@
 				<ul>
 
 					<li class = "highlight"><a href="./home">Home</a></li>
-					<li><a href="./login">Log In</a></li>
+					<li><a href="./login">Log Out</a></li>
 				
 				</ul>
 			
 	</nav>
 	
 	<main>
-	
+		<h1>${account.toString()}</h1>
 		<h1>All Vehicles</h1>
 		<table>
 			<tr>
@@ -61,6 +61,9 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<br>
+		<a href = "./addnew">+ New Vehicle</a>
+		
 	</main>
 </body>
 </html>

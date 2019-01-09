@@ -19,6 +19,7 @@ public class ServerController {
 		classlist.addBefore("org.eclipse.jetty.webapp.JettyWebXmlConfiguration", "org.eclipse.jetty.annotations.AnnotationConfiguration");
 		
 		ctx.addServlet("Servlet.ServletHome", "/home");
+		ctx.addServlet("Servlet.ServletLogin","/login");
 		
 		server.setHandler(ctx);
 		server.start();
