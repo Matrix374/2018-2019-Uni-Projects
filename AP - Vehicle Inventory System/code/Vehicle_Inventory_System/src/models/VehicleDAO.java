@@ -25,7 +25,7 @@ public class VehicleDAO {
 			System.out.print(e.getMessage());
 		}
 		
-		try {
+		 try {
 			String dbURL = "jdbc:sqlite:vehicles.sqlite";
 			dbConnection = DriverManager.getConnection(dbURL);
 			return dbConnection;

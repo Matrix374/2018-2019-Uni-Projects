@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.Account;
 import models.AccountDAO;
@@ -25,6 +26,8 @@ private static final long serialVersionUID = 1L;
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		
+		HttpSession session = req.getSession();
+		
 		AccountDAO dao = new AccountDAO();
 		Account current = null;
 		
@@ -33,13 +36,21 @@ private static final long serialVersionUID = 1L;
 		
 		try {
 			current = dao.Login(username, password);
+			
+			if(current.getLogin())
+			{
+				session.setAttribute("loggedin", true);
+				session.setAttribute("username", current);
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		RequestDispatcher view = req.getRequestDispatcher("login.jsp");
-		req.setAttribute("current", current);
+		req.setAttribute("session", session.getAttribute("loggedin"));
+		req.setAttribute("userGreet", session.getAttribute("username"));
 		view.forward(req,resp);
 	}
 }

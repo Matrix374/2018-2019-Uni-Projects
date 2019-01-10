@@ -43,6 +43,9 @@ public class AccountDAO {
 			statement = dbConnection.createStatement();
 			System.out.println("DBQuery = " + query);
 			result = statement.executeQuery(query);
+			
+			Account current = null;
+			
 			while(result.next())
 			{
 				if(user.equals(result.getString("username")) && pass.equals(result.getString("password")))
@@ -50,9 +53,13 @@ public class AccountDAO {
 					String firstname = result.getString("firstname");
 					String surname = result.getString("surname");
 					
-					Account current = new Account(firstname, surname, user);
+					current = new Account(firstname, surname, user);
 					return current;
 				}
+				current = new Account();
+				current.setLogin(false);
+				
+				return current;
 			}
 		} finally {
 			if (result != null) { result.close(); }

@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Vehicle Database Login</title>
+<meta <%@taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>>
 </head>
 <body>
 
@@ -30,7 +31,8 @@
 			<input type = "submit" value = "Login">
 		</form>
 		
-		<h2>Login Result : ${current.getLogin()}</h2>
+		<h2>Login Result : ${session}</h2>
+		<h2>${username}</h2>
 		
 	</main>
 </body>

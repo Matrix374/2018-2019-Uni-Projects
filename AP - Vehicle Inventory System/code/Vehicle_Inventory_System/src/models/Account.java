@@ -7,6 +7,11 @@ public class Account {
 	private String username;
 	private Boolean login = false;
 	
+	Account()
+	{
+		this.setLogin(false);
+	}
+	
 	Account(String firstname, String surname, String username)
 	{
 		this.firstname = firstname;

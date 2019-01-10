@@ -21,7 +21,7 @@
 	</nav>
 	
 	<main>
-		<h1>${account.toString()}</h1>
+		<h1>${}</h1>
 		<h1>All Vehicles</h1>
 		<table>
 			<tr>
