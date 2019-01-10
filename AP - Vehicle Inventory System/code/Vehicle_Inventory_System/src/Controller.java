@@ -9,6 +9,10 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import models.Vehicle;
+import models.VehicleDAO;
+
 import java.sql.SQLException;
 
 public class Controller {

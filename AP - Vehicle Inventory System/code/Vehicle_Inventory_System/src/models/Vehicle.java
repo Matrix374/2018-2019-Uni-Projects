@@ -1,3 +1,4 @@
+package models;
 /**
  * This is class that stores vehicle data from the VehiclesDAO class
  * 

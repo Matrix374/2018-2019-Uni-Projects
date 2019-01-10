@@ -1,3 +1,4 @@
+package models;
 /**
  * Establishes connection to the database and retrieves, updates or deletes data from the database.
  * 
