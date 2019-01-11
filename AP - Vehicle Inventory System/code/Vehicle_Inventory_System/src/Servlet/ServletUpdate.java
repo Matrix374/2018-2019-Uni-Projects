@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import models.Vehicle;
 import models.VehicleDAO;
 
-public class ServletInsert extends HttpServlet {
+public class ServletUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	HttpSession session;
@@ -21,6 +21,9 @@ public class ServletInsert extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		VehicleDAO dao = new VehicleDAO();
+		Vehicle temp = null;
+
 		session = req.getSession();
 
 		if (session.getAttribute("loggedin") == null || session.getAttribute("loggedin").equals(false))
@@ -29,9 +32,35 @@ public class ServletInsert extends HttpServlet {
 			resp.sendRedirect("home");
 		}
 
-		RequestDispatcher view = req.getRequestDispatcher("insert.jsp");
-		req.setAttribute("session", session.getAttribute("loggedin"));
-		view.forward(req, resp);
+		if (session.getAttribute("loggedin").equals(true)) {
+			int vehicle_id = Integer.valueOf(req.getParameter("vehicle_id"));
+			try {
+				temp = dao.getVehicle(vehicle_id);
+				session.setAttribute("temp", temp);
+
+				req.setAttribute("make", temp.getMake());
+				req.setAttribute("model", temp.getModel());
+				req.setAttribute("year", temp.getYear());
+				req.setAttribute("price", temp.getPrice());
+				req.setAttribute("license_number", temp.getLicense_number());
+				req.setAttribute("colour", temp.getColour());
+				req.setAttribute("number_doors", temp.getNumber_doors());
+				req.setAttribute("transmission", temp.getTransmission());
+				req.setAttribute("mileage", temp.getMileage());
+				req.setAttribute("fuel_type", temp.getFuel_type());
+				req.setAttribute("engine_size", temp.getEngine_size());
+				req.setAttribute("body_style", temp.getBody_style());
+				req.setAttribute("condition", temp.getCondition());
+				req.setAttribute("notes", temp.getNotes());
+
+				RequestDispatcher view = req.getRequestDispatcher("update.jsp");
+				view.forward(req, resp);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				resp.sendRedirect("home");
+			}
+		}
 	}
 
 	@Override
@@ -39,15 +68,17 @@ public class ServletInsert extends HttpServlet {
 
 		session = req.getSession();
 
+		VehicleDAO dao = new VehicleDAO();
+		Vehicle temp = null;
+
 		if (session.getAttribute("loggedin") == null || session.getAttribute("loggedin").equals(false))
 		{
 			session.setAttribute("loggedin", false);
 			resp.sendRedirect("home");
 		}
 
-		VehicleDAO dao = new VehicleDAO();
-		Vehicle temp = null;
-		if (session.getAttribute("loggedin").equals(true)) {
+		if (session.getAttribute("loggedin").equals(true)){
+			temp = (Vehicle) session.getAttribute("temp");
 			String make = req.getParameter("make");
 			String model = req.getParameter("model");
 			int year = Integer.valueOf(req.getParameter("year"));
@@ -63,11 +94,23 @@ public class ServletInsert extends HttpServlet {
 			String condition = req.getParameter("condition");
 			String notes = req.getParameter("notes");
 
-			temp = new Vehicle(1, make, model, year, price, license_number, colour, number_doors, transmission, mileage,
-					fuel_type, engine_size, body_style, condition, notes);
+			temp.setMake(make);
+			temp.setModel(model);
+			temp.setYear(year);
+			temp.setPrice(price);
+			temp.setLicense_number(license_number);
+			temp.setColour(colour);
+			temp.setNumber_doors(number_doors);
+			temp.setTransmission(transmission);
+			temp.setMileage(mileage);
+			temp.setFuel_type(fuel_type);
+			temp.setEngine_size(engine_size);
+			temp.setBody_style(body_style);
+			temp.setCondition(condition);
+			temp.setNotes(notes);
 
 			try {
-				dao.insertVehicle(temp);
+				dao.updateVehicle(temp, temp.getVehicle_id());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -75,5 +118,6 @@ public class ServletInsert extends HttpServlet {
 		}
 
 		resp.sendRedirect("home");
+
 	}
 }

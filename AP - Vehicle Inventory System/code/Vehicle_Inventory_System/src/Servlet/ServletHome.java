@@ -42,39 +42,4 @@ public class ServletHome extends HttpServlet {
 		req.setAttribute("userGreet", session.getAttribute("username"));
 		view.forward(req, resp);
 	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-
-		session = req.getSession();
-
-		if(session.getAttribute("loggedin") == null)
-			session.setAttribute("loggedin", false);
-
-		VehicleDAO dao = new VehicleDAO();
-
-		int vehicle_id = Integer.valueOf(req.getAttribute("Button"));
-		try {
-			dao.deleteVehicle(vehicle_id);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-
-		ArrayList<Vehicle> allVehicles = null;
-		try {
-			allVehicles = dao.getAllVehicles();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		RequestDispatcher view = req.getRequestDispatcher("index.jsp");
-		req.setAttribute("allVehicles", allVehicles);
-		req.setAttribute("session", session.getAttribute("loggedin"));
-		req.setAttribute("userGreet", session.getAttribute("username"));
-		view.forward(req, resp);
-
-	}
 }

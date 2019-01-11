@@ -22,6 +22,8 @@ public class ServerController {
 		ctx.addServlet("Servlet.ServletLogin","/login");
 		ctx.addServlet("Servlet.ServletLogout", "/logout");
 		ctx.addServlet("Servlet.ServletInsert", "/insert");
+		ctx.addServlet("Servlet.ServletDelete", "/delete");
+		ctx.addServlet("Servlet.ServletUpdate", "/update");
 		
 		server.setHandler(ctx);
 		server.start();

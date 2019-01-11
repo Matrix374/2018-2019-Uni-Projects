@@ -71,9 +71,12 @@
 
 				<c:if test="${session == true}">
 					<td>
-						<form action="home" method="post">
-							<input type="submit" value="${c.getVehicle_id()}" name="Button">
-						</form>
+						<a href="update?vehicle_id=${c.getVehicle_id()}">
+							<input type="submit" value="Update">
+						</a>
+						<a href="delete?vehicle_id=${c.getVehicle_id()}">
+							<input type="submit" value="Delete">
+						</a>
 					</td>
 				</c:if>
 
