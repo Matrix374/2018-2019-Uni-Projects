@@ -1,8 +1,12 @@
 package Servlet;
-
+/*
+ * Logs the user out and send them back home
+ * 
+ * @author Irfan_Hanafi
+ * 
+ */
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

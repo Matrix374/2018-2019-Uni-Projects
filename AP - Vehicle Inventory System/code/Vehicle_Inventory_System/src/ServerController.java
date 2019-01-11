@@ -1,3 +1,19 @@
+/*
+ * This is the Jetty server controller
+ * 
+ * This is where the front-end of the system is controlled from
+ * 
+ * the url of the website should be as follows:
+ * 
+ * localhost:4000/VDB
+ * 
+ * @author Irfan_Hanafi
+ * @version 1.5
+ * 
+ * @param ctx WebAppContext
+ * 
+ */
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.eclipse.jetty.webapp.Configuration.ClassList;
@@ -24,6 +40,8 @@ public class ServerController {
 		ctx.addServlet("Servlet.ServletInsert", "/insert");
 		ctx.addServlet("Servlet.ServletDelete", "/delete");
 		ctx.addServlet("Servlet.ServletUpdate", "/update");
+		ctx.addServlet("Servlet.ServletSales", "/sales");
+		ctx.addServlet("Servlet.ServletSalesInsert", "/salesInsert");
 		
 		server.setHandler(ctx);
 		server.start();

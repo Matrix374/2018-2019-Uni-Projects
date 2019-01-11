@@ -13,6 +13,7 @@
 
 		<ul>
 			<li><a href="./home">Home</a></li>
+			<li><a href="./sales">Sales</a></li>
 		</ul>
 
 	</nav>

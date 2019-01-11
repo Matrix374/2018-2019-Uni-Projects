@@ -1,3 +1,8 @@
+/*
+ * This is where the user table is accessed and where a login attempt would be made
+ * 
+ * @author Irfan_Hanafi
+ */
 package models;
 
 import java.sql.Connection;

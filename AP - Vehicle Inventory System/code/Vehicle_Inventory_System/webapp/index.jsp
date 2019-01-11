@@ -15,14 +15,15 @@
 		<ul>
 
 			<li class="highlight"><a href="./home">Home</a></li>
+			
+			<li><a href="./sales">Sales</a></li>
+			
 			<c:if test="${session == false}">
 				<li><a href="./login">Log In</a></li>
 			</c:if>
 			<c:if test="${session == true}">
 				<li><a href="./logout">Log Out</a></li>
 			</c:if>
-
-
 
 		</ul>
 
@@ -70,14 +71,15 @@
 				<td>${c.getNotes()}</td>
 
 				<c:if test="${session == true}">
-					<td>
-						<a href="update?vehicle_id=${c.getVehicle_id()}">
-							<input type="submit" value="Update">
-						</a>
-						<a href="delete?vehicle_id=${c.getVehicle_id()}">
-							<input type="submit" value="Delete">
-						</a>
-					</td>
+					<td><a href="update?vehicle_id=${c.getVehicle_id()}"> <input
+							type="submit" value="Update">
+					</a></td>
+					<td><a href="delete?vehicle_id=${c.getVehicle_id()}"> <input
+							type="submit" value="Delete">
+					</a></td>
+					<td><a href="salesInsert?vehicle_id=${c.getVehicle_id()}"> <input
+							type="submit" value="Sell">
+					</a></td>
 				</c:if>
 
 			</tr>

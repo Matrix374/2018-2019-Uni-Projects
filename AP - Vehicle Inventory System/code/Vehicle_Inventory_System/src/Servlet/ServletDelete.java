@@ -1,5 +1,11 @@
 package Servlet;
 
+/*
+ * Deletes Selected Vehicle
+ * 
+ * @author Irfan_Hanafi
+ */
+
 import java.io.IOException;
 import java.sql.SQLException;
 

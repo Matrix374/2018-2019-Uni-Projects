@@ -1,3 +1,9 @@
+/*
+ * This is where Account details are stored temporarily after accessing AccountDAO
+ * 
+ * @author Irfan_Hanafi
+ */
+
 package models;
 
 public class Account {

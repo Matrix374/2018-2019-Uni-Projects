@@ -1,9 +1,16 @@
 /**
- * This is the main method of the system
- * Console Testing is all done here
+ * This is the Controller for Console Testing
+ * 
+ * This Console Tester tests the functionality of:
+ * -Retrieving All Vehicles
+ * -Searching for Vehicles
+ * -Inserting Vehicles
+ * -Deleting Vehicles
+ * -Updating Vehicles
  * 
  * @author Irfan_Hanafi
  * @version 1.0
+ * @param v = temporary vehicle
  *
  */
 

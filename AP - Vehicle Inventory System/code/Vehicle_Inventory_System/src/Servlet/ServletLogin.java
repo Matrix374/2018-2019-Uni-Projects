@@ -1,5 +1,10 @@
 package Servlet;
-
+/*
+ * This is where the login request is made
+ * 
+ * @author Irfan_Hanafi
+ * 
+ */
 import java.io.IOException;
 import java.sql.SQLException;
 
