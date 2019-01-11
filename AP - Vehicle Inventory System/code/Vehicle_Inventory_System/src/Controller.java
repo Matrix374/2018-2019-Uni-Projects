@@ -1,14 +1,25 @@
 /**
- * This is the main method of the system
- * Console Testing is all done here
+ * This is the Controller for Console Testing
+ * 
+ * This Console Tester tests the functionality of:
+ * -Retrieving All Vehicles
+ * -Searching for Vehicles
+ * -Inserting Vehicles
+ * -Deleting Vehicles
+ * -Updating Vehicles
  * 
  * @author Irfan_Hanafi
  * @version 1.0
+ * @param v = temporary vehicle
  *
  */
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import models.Vehicle;
+import models.VehicleDAO;
+
 import java.sql.SQLException;
 
 public class Controller {
@@ -43,6 +54,7 @@ public class Controller {
 		System.exit(0);
 	}
 	
+	//Menu
 	public static int menu()
 	{
 		System.out.println("--------------------");
@@ -101,8 +113,7 @@ public class Controller {
 		
 		VehicleDAO dao = new VehicleDAO();
 		
-		boolean state = false;
-		state = dao.deleteVehicle(vehicle_id);
+		dao.deleteVehicle(vehicle_id);
 	}
 	
 	//Inserts new Vehicle
@@ -172,10 +183,10 @@ public class Controller {
 				license_number, colour, number_doors, transmission, mileage,
 				fuel_type, engine_size, body_style, condition, notes);
 		
-		boolean state = false;
-		state = dao.insertVehicle(temp);
+		dao.insertVehicle(temp);
 	}
 	
+	//Updates Vehicle Information
 	public static void updateVehicle() throws SQLException
 	{
 		VehicleDAO dao = new VehicleDAO();
