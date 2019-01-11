@@ -16,8 +16,15 @@ import models.AccountDAO;
 public class ServletLogin extends HttpServlet{
 private static final long serialVersionUID = 1L;
 	
+	HttpSession session;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		session = req.getSession();
+		
+		if(session.getAttribute("loggedin") == null)
+			session.setAttribute("loggedin", false);
 		
 		RequestDispatcher view = req.getRequestDispatcher("login.jsp");
 		view.forward(req, resp);
@@ -26,7 +33,7 @@ private static final long serialVersionUID = 1L;
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		
-		HttpSession session = req.getSession();
+		session = req.getSession();
 		
 		AccountDAO dao = new AccountDAO();
 		Account current = null;
@@ -40,7 +47,13 @@ private static final long serialVersionUID = 1L;
 			if(current.getLogin())
 			{
 				session.setAttribute("loggedin", true);
-				session.setAttribute("username", current);
+				session.setAttribute("username", current.getUsername());
+				req.getSession();
+				resp.sendRedirect("home");
+			}
+			else
+			{
+				session.setAttribute("loggedin", false);
 			}
 			
 		} catch (SQLException e) {
@@ -50,7 +63,6 @@ private static final long serialVersionUID = 1L;
 		
 		RequestDispatcher view = req.getRequestDispatcher("login.jsp");
 		req.setAttribute("session", session.getAttribute("loggedin"));
-		req.setAttribute("userGreet", session.getAttribute("username"));
 		view.forward(req,resp);
 	}
 }

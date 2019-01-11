@@ -56,17 +56,16 @@ public class AccountDAO {
 					current = new Account(firstname, surname, user);
 					return current;
 				}
-				current = new Account();
-				current.setLogin(false);
-				
-				return current;
 			}
+			
+			current = new Account();
+			current.setLogin(false);
+			
+			return current;
 		} finally {
 			if (result != null) { result.close(); }
 			if (statement != null) { statement.close(); }
 			if (dbConnection != null) { dbConnection.close(); }
 		}
-		
-		return null;
 	}
 }

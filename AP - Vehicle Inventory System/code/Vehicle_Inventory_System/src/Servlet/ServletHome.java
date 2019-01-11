@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.Vehicle;
 import models.VehicleDAO;
@@ -16,8 +17,15 @@ import models.VehicleDAO;
 public class ServletHome extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	HttpSession session;
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		session = req.getSession();
+		
+		if(session.getAttribute("loggedin") == null)
+			session.setAttribute("loggedin", false);
 		
 		VehicleDAO dao = new VehicleDAO();
 		ArrayList<Vehicle> allVehicles = null;
@@ -30,6 +38,8 @@ public class ServletHome extends HttpServlet {
 		
 		RequestDispatcher view = req.getRequestDispatcher("index.jsp");
 		req.setAttribute("allVehicles", allVehicles);
+		req.setAttribute("session", session.getAttribute("loggedin"));
+		req.setAttribute("userGreet", session.getAttribute("username"));
 		view.forward(req, resp);
 	}
 }
