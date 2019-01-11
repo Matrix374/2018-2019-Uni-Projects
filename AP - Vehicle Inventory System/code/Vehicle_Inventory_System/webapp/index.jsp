@@ -71,9 +71,8 @@
 
 				<c:if test="${session == true}">
 					<td>
-						<form method="POST" action="home">
-							<input type="submit" value="Update">
-							<input type="submit" value="Delete">
+						<form action="home" method="post">
+							<input type="submit" value="${c.getVehicle_id()}" name="Button">
 						</form>
 					</td>
 				</c:if>
@@ -82,7 +81,7 @@
 		</c:forEach>
 	</table>
 	<c:if test="${session == true}">
-		<form action="insertVehicle">
+		<form action="./insert">
 			<input type="submit" value="Add New Vehicle">
 		</form>
 	</c:if> </main>

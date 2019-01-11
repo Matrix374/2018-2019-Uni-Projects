@@ -14,7 +14,7 @@ import models.Account;
 import models.AccountDAO;
 
 public class ServletLogin extends HttpServlet{
-private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	HttpSession session;
 
@@ -36,18 +36,18 @@ private static final long serialVersionUID = 1L;
 		session = req.getSession();
 		
 		AccountDAO dao = new AccountDAO();
-		Account current = null;
+		Account temp = null;
 		
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		
 		try {
-			current = dao.Login(username, password);
+			temp = dao.Login(username, password);
 			
-			if(current.getLogin())
+			if(temp.getLogin())
 			{
 				session.setAttribute("loggedin", true);
-				session.setAttribute("username", current.getUsername());
+				session.setAttribute("username", temp.getUsername());
 				req.getSession();
 				resp.sendRedirect("home");
 			}

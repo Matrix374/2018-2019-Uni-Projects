@@ -5,8 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Vehicle Database Login</title>
-<meta
-	<%@taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>>
+<meta<%@taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>>
 </head>
 <body>
 
