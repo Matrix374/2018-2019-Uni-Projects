@@ -14,6 +14,61 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+int showmenu(void);
+
+void display(int, int, int, int, int, float, float);
+void fcfs(void);
+void sjf(void);
+void rr(void);
+
+int main(int argc, char **argv)
+{
+	
+	int choice = 0;
+	
+	
+	while(choice != 4){
+		choice = showmenu();
+		
+		switch(choice)
+		{
+			case 1:
+				fcfs();
+				break;
+			case 2:
+				sjf();
+				break;
+			case 3:
+				rr();
+				break;
+			case 4:
+				choice = 4;
+				break;
+			default:
+				choice = 0;
+				break;
+		}
+	}
+	
+	exit(0);
+	
+	return 0;
+}
+
+int showmnenu()
+{
+	printf("1 - First Come First Served (FCFS) Scheduler\n");
+	printf("2 - Shortest Job First (SJF) Scheduler\n");
+	printf("3 - Round Robin (RR) Scheduler\n");
+	printf("4 - Quit\n");
+	printf("Enter a Selection: ");
+	scanf("%d", &choice);
+		
+	printf("\n");
+	
+	return choice;
+}
+
 //Display Performance Metrics
 void display(int at[], int bt[], int tat[], int wt[], int n, float atat, float awt)
 {  
@@ -76,45 +131,5 @@ void sjf()
 void rr()
 {
 	printf("\nRR");
-}
-
-int main(int argc, char **argv)
-{
-	
-	int choice = 0;
-	
-	while(choice != 4){
-		printf("1 - First Come First Served (FCFS) Scheduler\n");
-		printf("2 - Shortest Job First (SJF) Scheduler\n");
-		printf("3 - Round Robin (RR) Scheduler\n");
-		printf("4 - Quit\n");
-		printf("Enter a Selection: ");
-		scanf("%d", &choice);
-		
-		printf("\n");
-		
-		switch(choice)
-		{
-			case 1:
-				fcfs();
-				break;
-			case 2:
-				sjf();
-				break;
-			case 3:
-				rr();
-				break;
-			case 4:
-				choice = 4;
-				break;
-			default:
-				choice = 0;
-				break;
-		}
-	}
-	
-	exit(0);
-	
-	return 0;
 }
 
