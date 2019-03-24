@@ -184,7 +184,8 @@ void display(int at[], int bt[], int tat[], int wt[], int n, float atat, float a
 /*
 * Purpose: First Come First Serve Scheduler
 *
-* Explanation:
+* Explanation:Receives Arrival Time and Burst Time and calculates the Wait Time, Turnaround Time, Average Wait Time and Average Turnaround Time
+              based off which process arrives first
 *
 * Parameters: int at[] - Arrival Time
               int bt[] - Burst Time
@@ -218,14 +219,15 @@ void fcfs(int at[], int bt[])
 /*
 * Purpose: Shortest Job First Scheduler
 *
-* Explanation:
+* Explanation:Receives Arrival Time and Burst Time and check if the immediate processes after the first one has a shorter burst time than the next one.
+              If it is shorter it is swapped and ran first.
 *
 * Parameters: int at[] - Arrival Time
               int bt[] - Burst Time
 *
 * Advantages:
 *
-* Disadvantages:
+* Disadvantages: When new processes are continually added, there is a chance for the program to continue working on shorter processes and ignore the longer processes
 *
 */
 void sjf(int at[], int bt[])
@@ -269,7 +271,9 @@ void sjf(int at[], int bt[])
 /*
 * Purpose: Round Robin Scheduler
 *
-* Explanation:
+* Explanation: Receives Arrival Time and Burst Time and spends a certain amount of time doing the work required based on the Time Quantum inputted.
+               If a process's work is not finished within the Time Quantum, work is halted and is given to the next process in queue.
+               Once a process is finished a flag is raised and it will calculate its Wait Time and Turnaround Time and removed from queue.
 *
 * Parameters: int at[] - Arrival Time
               int bt[] - Burst Time
