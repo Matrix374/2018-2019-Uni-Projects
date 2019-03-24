@@ -25,7 +25,7 @@ public class ServletApi extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
-		
+		//Get all vehicles?
 		int vehicle_id = Integer.valueOf(req.getParameter("vehicle_id"));
 		Vehicle tempVehicle = null;
 		
@@ -44,8 +44,37 @@ public class ServletApi extends HttpServlet {
 		writer.close();
 	}
 	
-	//@Override doPut
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	{
+		//Insert?
+	}
 	
-	//@Override doDelete
+	@Override 
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	{
+		//Update?
+		/*
+		 * Get Vehicle Parameters as JSON
+		 * Parse
+		 * Change Values
+		 * Send New Vehicle values with JSON
+		 */
+	}
+	
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	{
+		//Delete
+		int vehicle_id = Integer.valueOf(req.getParameter("vehicle_id"));
+		try {
+			dao.deleteVehicle(vehicle_id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		resp.sendRedirect("home");
+	}
 
 }
