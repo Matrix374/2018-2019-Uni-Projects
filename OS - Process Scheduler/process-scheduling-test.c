@@ -10,35 +10,88 @@
 #include <stdio.h>
 
 int showMenu(void);
-int getData(int);
 
 void display(int[], int[], int[], int[], int, float, float);
-void fcfs(void);
-void sjf(void);
-void rr(void);
+void fcfs(int[], int[]);
+void sjf(int[], int[]);
+void rr(int[], int[]);
 
+void calculate(int [], int [], int , int [], float , int [], float , int);
 void bubbleSort(int[], int[], int);
 void swap(int*, int*);
 
+//dataset1
+const int at1[6] = {0, 1, 2, 3, 4, 6}; //Arrival Time
+const int bt1[6] = {3, 6, 8, 25, 5, 20}; //Burst Time
+//dataset2
+const int at2[6] = {0, 1, 2, 3, 4, 6}; //Arrival Time
+const int bt2[6] = {25, 20, 3, 8, 6, 5}; //Burst Time
+//dataset3
+const int at3[6] = {3, 1, 2, 0, 6, 8}; //Arrival Time
+const int bt3[6] ={4, 5, 20, 25, 14, 6}; //Burst Time
+
 int main(int argc, char **argv)
 {
+    int *at[6];
+    int *bt[6];
 
 	int choice = 0;
+    int dataChoice = 0;
 
 	while(choice != 4){
 
         choice = showMenu();
 
+        if(choice == 4)
+        {
+            break;
+        }
+
+        dataChoice = chooseData();
+
+        if(dataChoice = 1)
+        {
+            int i, n = 6;
+            for(i = 0; i < n; i++)
+            {
+                at[i] = at1[i];
+                bt[i] = bt1[i];
+            }
+        }
+        else if(dataChoice = 2)
+        {
+            int i, n = 6;
+            for(i = 0; i < n; i++)
+            {
+                at[i] = at2[i];
+                bt[i] = bt2[i];
+            }
+        }
+        else if(dataChoice = 3)
+        {
+            int i, n = 6;
+            for(i = 0; i < n; i++)
+            {
+                at[i] = at3[i];
+                bt[i] = bt3[i];
+            }
+        }
+        else
+        {
+            choice = 0;
+            printf("Dataset Doesn't Exist\n");
+        }
+
 		switch(choice)
 		{
 			case 1:
-				fcfs();
+				fcfs(at, bt);
 				break;
 			case 2:
-				sjf();
+				sjf(at, bt);
 				break;
 			case 3:
-				rr();
+				rr(at, bt);
 				break;
 			case 4:
 				choice = 4;
@@ -55,17 +108,12 @@ int main(int argc, char **argv)
 }
 
 /*
-* Purpose: The purpose of this function is to separate the menu from the controller
-          show the options the user has on which scheduler they can use
-          and receive an input which it returns back to main
+* Purpose: The purpose of this function is to separate the menu from the controller.
+          Shows the options the user has on which scheduler they can use and receive an input which it returns back to main
 *
-* Explanation:
 *
 * Returns: int choice - returns numbers 1-4 to the main
 *
-* Advantages: Modular design allows developers to work on separate aspects of code
-              without accidentally affecting unrelated parts of the code.
-              This also allows for cleaner and more readable code in the main module.
 */
 int showMenu()
 {
@@ -84,70 +132,39 @@ int showMenu()
 }
 
 /*
-* Purpose: Returns a data set which consists of Arrival Time and Burst Time
+* Purpose: The purpose of this function is to separate the menu from the controller.
+          Shows the options the user has on which scheduler they can use and receive an input which it returns back to main
 *
-* Explanation:
 *
-* Parameters: int choice - receives number 1-3 which determines which dataset is used
-*
-* Returns: int dataset - returns a dataset consisting of Arrival Time and Burst Time
+* Returns: int choice - returns numbers 1-3 to the main
 *
 */
-int getData(int choice)
+int chooseData()
 {
-    int dataset1[2][6] =
-    {
-        {0, 1, 2, 3, 4, 6}, //Arrival Time
-        {3, 6, 8, 25, 5, 20} //Burst Time
-    };
-    int dataset2[2][6] =
-    {
-        {0, 1, 2, 3, 4, 6}, //Arrival Time
-        {25, 20, 3, 8, 6, 5} //Burst Time
-    };
-    int dataset3[2][6] =
-    {
-        {3, 1, 2, 0, 6, 8}, //Arrival Time
-        {4, 5, 20, 25, 14, 6} //Burst Time
-    };
+    int choice;
 
-    switch(choice)
-    {
-        case 1:
-            return dataset1;
-            break;
-        case 2:
-            return dataset2;
-            break;
-        case 3:
-            return dataset3;
-            break;
-        default:
-            printf("Dataset doesn't exist");
-            break;
-    }
+    printf("1 - Dataset 1\n");
+    printf("2 - Dataset 2\n");
+    printf("3 - Dataset 3\n");
+    printf("Enter a Selection: ");
+    scanf("%d", &choice);
 
-    return 0;
+    printf("\n");
+
+    return choice;
 }
-
 /*
 * Purpose: Since all schedulers uses the same variables, this function was made so that code
            repeated less and doesn't bloat the scheduler functions
 *
-* Explanation:
+* Parameters: int at[] - Arrival Time
+              int bt[] - Burst Time
+              int tat[] - Turnaround Time
+              int wt[] - Wait Time
+              int n - Number of Processes
+              float atat - Average Turnaround Time
+              float awt - Average Wait Time
 *
-* Parameters: int at[] -
-              int bt[] -
-              int tat[] -
-              int wt[] -
-              int n -
-              float atat -
-              float awt -
-*
-*
-* Advantages: Modular design allows developers to work on separate aspects of code
-              without accidentally affecting unrelated parts of the code.
-              This also allows for cleaner and more readable code in the main module.
 */
 void display(int at[], int bt[], int tat[], int wt[], int n, float atat, float awt)
 {
@@ -169,24 +186,20 @@ void display(int at[], int bt[], int tat[], int wt[], int n, float atat, float a
 *
 * Explanation:
 *
-* Advantages: Modular design allows developers to work on separate aspects of code
-              without accidentally affecting unrelated parts of the code.
-              This also allows for cleaner and more readable code in the main module.
+* Parameters: int at[] - Arrival Time
+              int bt[] - Burst Time
+*
+* Advantages:
 *
 * Disadvantages:
 *
 */
-void fcfs()
+void fcfs(int at[], int bt[])
 {
 	printf("\nFirst Come First Serve\n");
 
 	int wt[6]; //wait time
 	int n = 6; //number of processes
-	//int at[6] = {0, 1, 2, 3, 5, 6}; // Arrival time of all processes
-	//int bt[6] = {4, 3, 1, 2, 5, 6}; // Burst time of all processes
-
-    int at[6] = {3, 1, 2, 0, 6, 8};
-    int bt[6] = {4, 5, 20, 25, 14, 6};
 
     bubbleSort(at, bt, n);
 
@@ -199,45 +212,47 @@ void fcfs()
 
     int btt=bt[0];//to store total burst time sum
 
-    //Calculation
-    int i;
-
-    for(i=1;i<n;i++){
-      wt[i]=btt-at[i];
-      btt+=bt[i];
-      awt+=wt[i];
-      tat[i]= wt[i]+bt[i];
-      atat+=tat[i];
-    }
-
-    atat/=n;
-    awt/=n;
-
-	display(at, bt, tat, wt, n, atat, awt);
+    calculate(at, bt, btt, wt, awt, tat, atat, n);
 }
 
 /*
-* Purpose: Shortest Job First
+* Purpose: Shortest Job First Scheduler
 *
 * Explanation:
 *
-* Advantages: Modular design allows developers to work on separate aspects of code
-              without accidentally affecting unrelated parts of the code.
-              This also allows for cleaner and more readable code in the main module.
+* Parameters: int at[] - Arrival Time
+              int bt[] - Burst Time
+*
+* Advantages:
 *
 * Disadvantages:
 *
 */
-void sjf()
+void sjf(int at[], int bt[])
 {
 	printf("\nShortest Job First\n");
 
 	int wt[6]; //wait time
 	int n = 6; //number of processes
-	int at[6] = {3, 1, 2, 0, 6, 8};
-    int bt[6] = {4, 5, 20, 25, 14, 6};
+
+    int temp_wt[6]; //temp wait time for sorting purposes
 
     bubbleSort(at, bt, n);
+    int i;
+
+    for (i = 1; i < n - 1; i++)
+    {
+        temp_wt[i] = at[i]+ bt[i];
+        temp_wt[i+1] = at[i+1] + bt[i+1];
+
+        if (temp_wt[i] > temp_wt[i+1])
+        {
+            swap(&at[i], &at[i+1]);
+            swap(&bt[i], &bt[i+1]);
+        }
+    }
+
+    //
 
 	int tat[6]; //turn around time
 
@@ -248,36 +263,23 @@ void sjf()
 
     int btt=bt[0];//to store total burst time sum
 
-    //Calculation
-    int i;
-
-    for(i=1;i<n;i++){
-      wt[i]=btt-at[i];
-      btt+=bt[i];
-      awt+=wt[i];
-      tat[i]= wt[i]+bt[i];
-      atat+=tat[i];
-    }
-
-    atat/=n;
-    awt/=n;
-
-	display(at, bt, tat, wt, n, atat, awt);
+    calculate(at, bt, btt, wt, awt, tat, atat, n);
 }
 
 /*
-* Purpose: Round Robin
+* Purpose: Round Robin Scheduler
 *
 * Explanation:
 *
-* Advantages: Modular design allows developers to work on separate aspects of code
-              without accidentally affecting unrelated parts of the code.
-              This also allows for cleaner and more readable code in the main module.
+* Parameters: int at[] - Arrival Time
+              int bt[] - Burst Time
+*
+* Advantages:
 *
 * Disadvantages:
 *
 */
-void rr()
+void rr(int at[], int bt[])
 {
 	printf("\nRound Robin\n");
 
@@ -289,9 +291,6 @@ void rr()
 	int n = 6; //number of processes
 
 	remain = n;
-
-	int at[6] = {3, 1, 2, 0, 6, 8};
-    int bt[6] = {4, 5, 20, 25, 14, 6};
 
     bubbleSort(at, bt, n);
 
@@ -316,7 +315,7 @@ void rr()
 
     int i = 0;
 
-	for(time = 0, i = 0; remain != 0;)
+	while(remain != 0)
     {
         if(rt[i] <= timeQuantum && rt[i] > 0)
         {
@@ -344,10 +343,8 @@ void rr()
 
         if(i == n - 1)
             i = 0;
-        else if(at[i+1] <= time)
-            i++;
         else
-            i = 0;
+            i++;
     }
 
 
@@ -357,7 +354,27 @@ void rr()
     display(at, bt, tat, wt, n, atat, awt);
 }
 
-//Sorts Arr1 based on Ascending Order
+void calculate(int at[], int bt[], int btt, int wt[], float awt, int tat[], float atat, int n)
+{
+    int i;
+    for(i=0; i < n; i++)
+    {
+        wt[i] = btt - at[i];
+        btt += bt[i];
+        awt += wt[i];
+        tat[i] = wt[i] + bt[i];
+        atat += tat[i];
+    }
+
+    atat /= n;
+    awt /= n;
+
+    display(at, bt, tat, wt, n, atat, awt);
+}
+
+/*
+*Purpose: Sort datasets based on arrival time
+*/
 void bubbleSort(int arr1[], int arr2[], int n)
 {
    int i, j;
@@ -380,5 +397,3 @@ void swap(int *x, int *y)
     *x = *y;
     *y = temp;
 }
-
-
