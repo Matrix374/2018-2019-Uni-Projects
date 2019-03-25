@@ -17,7 +17,7 @@ void fcfs(int[], int[]);
 void sjf(int[], int[]);
 void rr(int[], int[]);
 
-void calculate(int [], int [], int , int [], float , int [], float , int);
+void calculate(int [], int [], int [], int , int [], float , int [], float , int);
 void bubbleSort(int[], int[], int);
 void swap(int*, int*);
 
@@ -201,20 +201,20 @@ void fcfs(int at[], int bt[])
 	printf("\nFirst Come First Serve\n");
 
 	int wt[6]; //wait time
+	int ct[6]; //completion time
 	int n = 6; //number of processes
 
     bubbleSort(at, bt, n);
 
 	int tat[6]; //turn around time
 
-	float awt = 0,atat; //average wait time and average turn around time
+	float awt = 0,atat = 0; //average wait time and average turn around time
 
 	wt[0]=0;
-    atat=tat[0]=bt[0];
 
-    int btt=bt[0];//to store total burst time sum
+    int ctt = 0;//completion time total
 
-    calculate(at, bt, btt, wt, awt, tat, atat, n);
+    calculate(at, bt, ct, ctt, wt, awt, tat, atat, n);
 }
 
 /*
@@ -236,37 +236,39 @@ void sjf(int at[], int bt[])
 	printf("\nShortest Job First\n");
 
 	int wt[6]; //wait time
+	int ct[6]; //completion time
 	int n = 6; //number of processes
 
-    int temp_wt[6]; //temp wait time for sorting purposes
-
     bubbleSort(at, bt, n);
-    int i;
-
-    for (i = 1; i < n - 1; i++)
+    int i, j, k = 1;
+    
+    int bque = 0;
+	
+    for (i = 0; i < n; i++)
     {
-        temp_wt[i] = at[i]+ bt[i];
-        temp_wt[i+1] = at[i+1] + bt[i+1];
+		bque += bt[i];
+		
+		for(j = i + 1; j < n; j++)
+		{
 
-        if (temp_wt[i] > temp_wt[i+1])
-        {
-            swap(&at[i], &at[i+1]);
-            swap(&bt[i], &bt[i+1]);
-        }
+			if (bque > at[j] && bt[j] < bt[k])
+			{
+				swap(&at[j], &at[k]);
+				swap(&bt[j], &bt[k]);
+			}
+		} 
+		k++;
     }
-
-    //
 
 	int tat[6]; //turn around time
 
-	float awt = 0,atat; //average wait time and average turn around time
+	float awt = 0,atat = 0; //average wait time and average turn around time
 
 	wt[0]=0;
-    atat=tat[0]=bt[0];
+    
+    int ctt=0;//completion time total
 
-    int btt=bt[0];//to store total burst time sum
-
-    calculate(at, bt, btt, wt, awt, tat, atat, n);
+    calculate(at, bt, ct, ctt, wt, awt, tat, atat, n);
 }
 
 /*
@@ -357,16 +359,17 @@ void rr(int at[], int bt[])
     display(at, bt, tat, wt, n, atat, awt);
 }
 
-void calculate(int at[], int bt[], int btt, int wt[], float awt, int tat[], float atat, int n)
+void calculate(int at[], int bt[], int ct[], int ctt, int wt[], float awt, int tat[], float atat, int n)
 {
     int i;
     for(i=0; i < n; i++)
     {
-        wt[i] = btt - at[i];
-        btt += bt[i];
-        awt += wt[i];
-        tat[i] = wt[i] + bt[i];
+        ctt += bt[i];
+        ct[i] = ctt;
+        tat[i] = ct[i] - at[i];
+        wt[i] = tat[i] - bt[i];
         atat += tat[i];
+        awt += wt[i];
     }
 
     atat /= n;
@@ -382,7 +385,7 @@ void bubbleSort(int arr1[], int arr2[], int n)
 {
    int i, j;
    for (i = 0; i < n - 1; i++)
-  {
+   {
       for (j = 0; j < n-i - 1; j++)
       {
          if (arr1[j] > arr1[j+1])
