@@ -8,29 +8,21 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 int showMenu(void);
 int chooseData(void);
 
 void display(int[], int[], int[], int[], int, float, float);
-void fcfs(int[], int[]);
-void sjf(int[], int[]);
-void rr(int[], int[]);
+void fcfs(int[], int[], int);
+void sjf(int[], int[], int);
+void rr(int[], int[], int);
 
-void calculate(int [], int [], int [], int , int [], float , int [], float , int);
+void calculate(int, int [], int [], int [], int , int [], float , int [], float , int);
 void bubbleSort(int[], int[], int);
 void swap(int*, int*);
-void getData(int[], int[], int[], int[]);
-
-//dataset1
-int at1[6] = {0, 1, 2, 3, 4, 6}; //Arrival Time
-int bt1[6] = {3, 6, 8, 25, 5, 20}; //Burst Time
-//dataset2
-int at2[6] = {0, 1, 2, 3, 4, 6}; //Arrival Time
-int bt2[6] = {25, 20, 3, 8, 6, 5}; //Burst Time
-//dataset3
-int at3[6] = {3, 1, 2, 0, 6, 8}; //Arrival Time
-int bt3[6] ={4, 5, 20, 25, 14, 6}; //Burst Time
+void readFile(int, int[], int[]);
+void writeFile(int, int[], int[], int[], int[], float, float);
 
 int main(int argc, char **argv)
 {
@@ -53,15 +45,16 @@ int main(int argc, char **argv)
 
         if(dataChoice == 1)
         {
-			getData(at, bt, at1, bt1);
+			readFile(dataChoice, at, bt);
+			
         }
         else if(dataChoice == 2)
         {
-            getData(at, bt, at2, bt2);
+            readFile(dataChoice, at, bt);
         }
         else if(dataChoice == 3)
         {
-            getData(at, bt, at3, bt3);
+            readFile(dataChoice, at, bt);
         }
         else
         {
@@ -72,13 +65,13 @@ int main(int argc, char **argv)
 		switch(choice)
 		{
 			case 1:
-				fcfs(at, bt);
+				fcfs(at, bt, dataChoice);
 				break;
 			case 2:
-				sjf(at, bt);
+				sjf(at, bt, dataChoice);
 				break;
 			case 3:
-				rr(at, bt);
+				rr(at, bt, dataChoice);
 				break;
 			case 4:
 				choice = 4;
@@ -152,7 +145,6 @@ int chooseData()
 */
 void display(int at[], int bt[], int tat[], int wt[], int n, float atat, float awt)
 {
-
     int i;
 
     printf("\nAT\tBT\tTaT\tWT\n");
@@ -179,7 +171,7 @@ void display(int at[], int bt[], int tat[], int wt[], int n, float atat, float a
 * Disadvantages: Not Efficient, will run processes until it finishes and is also based on Arrival Time so if shorter processes arrives later they will have to wait for longer processes to finish first
 *
 */
-void fcfs(int at[], int bt[])
+void fcfs(int at[], int bt[], int dataChoice)
 {
 	printf("\nFirst Come First Serve\n");
 
@@ -197,7 +189,7 @@ void fcfs(int at[], int bt[])
 
     int ctt = 0;//completion time total
 
-    calculate(at, bt, ct, ctt, wt, awt, tat, atat, n);
+    calculate(dataChoice, at, bt, ct, ctt, wt, awt, tat, atat, n);
 }
 
 /*
@@ -214,7 +206,7 @@ void fcfs(int at[], int bt[])
 * Disadvantages: When new processes are continually added, there is a chance for the program to continue working on shorter processes and ignore the longer processes
 *
 */
-void sjf(int at[], int bt[])
+void sjf(int at[], int bt[], int dataChoice)
 {
 	printf("\nShortest Job First\n");
 
@@ -251,7 +243,7 @@ void sjf(int at[], int bt[])
     
     int ctt=0;//completion time total
 
-    calculate(at, bt, ct, ctt, wt, awt, tat, atat, n);
+    calculate(dataChoice, at, bt, ct, ctt, wt, awt, tat, atat, n);
 }
 
 /*
@@ -270,7 +262,7 @@ void sjf(int at[], int bt[])
 * 				 If the Time Quantum is longer than needed, it behaves similarly to FCFS but if the Time Quantum is shorter, the CPU efficiency will decrease due to frequent CPU switches
 *
 */
-void rr(int at[], int bt[])
+void rr(int at[], int bt[], int dataChoice)
 {
 	printf("\nRound Robin\n");
 
@@ -297,7 +289,7 @@ void rr(int at[], int bt[])
 	float awt,atat; //average wait time and average turn around time
 
 	wt[0]=0;
-    atat=tat[0]=bt[0];
+    atat=0;
 
 	printf("Input Time Quantum: ");
 	scanf("%d", &timeQuantum);
@@ -341,6 +333,7 @@ void rr(int at[], int bt[])
     awt/=n;
 
     display(at, bt, tat, wt, n, atat, awt);
+    writeFile(dataChoice, at, bt, tat, wt, atat, awt);
 }
 /*
  * Purpose: FCFS and SJF uses the same calculations to calculate its' metrics so instead of repeating code I created a function
@@ -368,7 +361,7 @@ void rr(int at[], int bt[])
  *             float atat
  *             int n
  */
-void calculate(int at[], int bt[], int ct[], int ctt, int wt[], float awt, int tat[], float atat, int n)
+void calculate(int dataChoice, int at[], int bt[], int ct[], int ctt, int wt[], float awt, int tat[], float atat, int n)
 {
     int i;
     for(i=0; i < n; i++)
@@ -385,6 +378,7 @@ void calculate(int at[], int bt[], int ct[], int ctt, int wt[], float awt, int t
     awt /= n;
 
     display(at, bt, tat, wt, n, atat, awt);
+    writeFile(dataChoice, at, bt, tat, wt, atat, awt);
 }
 
 /*
@@ -416,12 +410,82 @@ void swap(int *x, int *y)
 /*
  * Purpose: Assignment of Arrival Time and Burst Time to datasets' values
  */
-void getData(int at[], int bt[], int dataAT[], int dataBT[])
+void readFile(int dataChoice, int at[], int bt[])
 {
-	int i, n = 6;
-    for(i = 0; i < n; i++)
-    {            
-		at[i] = dataAT[i];
-        bt[i] = dataBT[i];
-    }
+	FILE *fp;
+	char line[256];
+	
+	int i = 0;
+	int j = 0;
+	
+	int pid[6];
+	
+	switch(dataChoice)
+	{
+		case 1:
+			fp = fopen("dataset1.txt", "r");
+			break;
+		
+		case 2:
+			fp = fopen("dataset2.txt", "r");
+			break;
+		
+		case 3:
+			fp = fopen("dataset3.txt", "r");
+			break;
+	}
+	
+	if(!fp)
+	{
+		perror("Error Opening File");
+		return;
+	}
+	
+	while(fgets(line, sizeof(line), fp))
+	{
+		i++;
+		if(i >= 1)
+		{
+			fscanf(fp, "%d %d %d", &pid[j], &at[j], &bt[j]);
+			j++;
+		}
+	}
+}
+/*
+ * Purpose: Writes out the Result in a file 
+ */
+void writeFile(int dataChoice,int at[], int bt[], int tat[], int wt[], float atat, float awt)
+{
+	FILE *fp;
+	int n = 6;
+	
+	switch(dataChoice)
+	{
+		case 1:
+			fp = fopen("dataset1-results.txt", "w");
+			break;
+		
+		case 2:
+			fp = fopen("dataset2-results.txt", "w");
+			break;
+		
+		case 3:
+			fp = fopen("dataset3-results.txt", "w");
+			break;
+	}
+	
+	if(!fp)
+	{
+		perror("Error Opening File");
+		return;
+	}
+	
+	for(int i = 0; i < n; i++)
+	{
+		fprintf(fp, "%3d\t%3d\t%3d\t%3d\n", at[i], bt[i], tat[i], wt[i]);
+	}
+	
+	fprintf(fp, "Average Turn Around Time: %f\nAverage WaitTime:%f\n\n", atat, awt);
+	
+	fclose(fp);
 }
