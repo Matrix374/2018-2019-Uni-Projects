@@ -10,6 +10,7 @@
 #include <stdio.h>
 
 int showMenu(void);
+int chooseData(void);
 
 void display(int[], int[], int[], int[], int, float, float);
 void fcfs(int[], int[]);
@@ -32,8 +33,8 @@ const int bt3[6] ={4, 5, 20, 25, 14, 6}; //Burst Time
 
 int main(int argc, char **argv)
 {
-    int *at[6];
-    int *bt[6];
+    int at[6];
+    int bt[6];
 
 	int choice = 0;
     int dataChoice = 0;
@@ -49,7 +50,7 @@ int main(int argc, char **argv)
 
         dataChoice = chooseData();
 
-        if(dataChoice = 1)
+        if(dataChoice == 1)
         {
             int i, n = 6;
             for(i = 0; i < n; i++)
@@ -58,7 +59,7 @@ int main(int argc, char **argv)
                 bt[i] = bt1[i];
             }
         }
-        else if(dataChoice = 2)
+        else if(dataChoice == 2)
         {
             int i, n = 6;
             for(i = 0; i < n; i++)
@@ -67,7 +68,7 @@ int main(int argc, char **argv)
                 bt[i] = bt2[i];
             }
         }
-        else if(dataChoice = 3)
+        else if(dataChoice == 3)
         {
             int i, n = 6;
             for(i = 0; i < n; i++)
@@ -206,7 +207,7 @@ void fcfs(int at[], int bt[])
 
 	int tat[6]; //turn around time
 
-	float awt,atat; //average wait time and average turn around time
+	float awt = 0,atat; //average wait time and average turn around time
 
 	wt[0]=0;
     atat=tat[0]=bt[0];
@@ -258,7 +259,7 @@ void sjf(int at[], int bt[])
 
 	int tat[6]; //turn around time
 
-	float awt,atat; //average wait time and average turn around time
+	float awt = 0,atat; //average wait time and average turn around time
 
 	wt[0]=0;
     atat=tat[0]=bt[0];
@@ -311,8 +312,6 @@ void rr(int at[], int bt[])
 
 	wt[0]=0;
     atat=tat[0]=bt[0];
-
-    int btt=bt[0];//to store total burst time sum
 
 	printf("Input Time Quantum: ");
 	scanf("%d", &timeQuantum);
