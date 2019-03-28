@@ -92,31 +92,44 @@ public class ServletApi extends HttpServlet {
 		}
 	}
 	
-	//Update Vehicle
+	//Update Vehicle -Implemented Haven't Tested-
 	@Override 
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		Vehicle temp = null;
 		
-		int vehicle_id = Integer.valueOf(req.getParameter("vehicle_id"));
+		String jsonVehicle = req.getParameter("json");
+		JsonParser jsonParser = new JsonParser();
+		JsonElement jsonElement = jsonParser.parse(jsonVehicle);
+		JsonObject vehicle = jsonElement.getAsJsonObject();
+		
+		int vehicle_id = vehicle.get("vehicle_id").getAsInt();
+		
+		String make = vehicle.get("make").getAsString();
+		String model = vehicle.get("model").getAsString();
+		
+		int year = vehicle.get("year").getAsInt();
+		int price = vehicle.get("price").getAsInt();
+		
+		String license_number = vehicle.get("license_number").getAsString();
+		String colour = vehicle.get("colour").getAsString();
+		
+		int number_doors = vehicle.get("number_doors").getAsInt();
+		
+		String transmission = vehicle.get("transmission").getAsString();
+		
+		int mileage = vehicle.get("mileage").getAsInt();
+		
+		String fuel_type = vehicle.get("fuel_type").getAsString();
+		
+		int engine_size = vehicle.get("engine_size").getAsInt();
+		
+		String body_style = vehicle.get("body_style").getAsString();
+		String condition = vehicle.get("condition").getAsString();
+		String notes = vehicle.get("notes").getAsString();
 		
 		try {
 			temp = dao.getVehicle(vehicle_id);
-			
-			String make = req.getParameter("make");
-			String model = req.getParameter("model");
-			int year = Integer.valueOf(req.getParameter("year"));
-			int price = Integer.valueOf(req.getParameter("price"));
-			String license_number = req.getParameter("license_number");
-			String colour = req.getParameter("colour");
-			int number_doors = Integer.valueOf(req.getParameter("number_doors"));
-			String transmission = req.getParameter("transmission");
-			int mileage = Integer.valueOf(req.getParameter("mileage"));
-			String fuel_type = req.getParameter("fuel_type");
-			int engine_size = Integer.valueOf(req.getParameter("engine_size"));
-			String body_style = req.getParameter("body_style");
-			String condition = req.getParameter("condition");
-			String notes = req.getParameter("notes");
 			
 			temp.setMake(make);
 			temp.setModel(model);
@@ -133,10 +146,13 @@ public class ServletApi extends HttpServlet {
 			temp.setCondition(condition);
 			temp.setNotes(notes);
 			
+			dao.updateVehicle(temp, temp.getVehicle_id());
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 	
 	@Override
