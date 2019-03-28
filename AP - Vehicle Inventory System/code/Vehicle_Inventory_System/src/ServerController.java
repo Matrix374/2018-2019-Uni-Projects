@@ -42,6 +42,7 @@ public class ServerController {
 		ctx.addServlet("Servlet.ServletUpdate", "/update");
 		ctx.addServlet("Servlet.ServletSales", "/sales");
 		ctx.addServlet("Servlet.ServletSalesInsert", "/salesInsert");
+		ctx.addServlet("Servlet.ServletApi", "/server");
 		
 		server.setHandler(ctx);
 		server.start();
