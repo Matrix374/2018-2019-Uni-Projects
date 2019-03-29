@@ -92,7 +92,7 @@ public class ServletApi extends HttpServlet {
 		}
 	}
 	
-	//Update Vehicle -Implemented Haven't Tested-
+	//Update Vehicle
 	@Override 
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
