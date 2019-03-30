@@ -158,7 +158,6 @@ public class ServletApi extends HttpServlet {
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
-		//Delete
 		int vehicle_id = Integer.valueOf(req.getParameter("vehicle_id"));
 		try {
 			dao.deleteVehicle(vehicle_id);
@@ -166,8 +165,6 @@ public class ServletApi extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		resp.sendRedirect("home");
 	}
 
 }
