@@ -1,9 +1,5 @@
 package Servlet;
-/*
- * The Home Page Servlet that displays all Vehicles within the database
- * 
- * @author Irfan_Hanafi
- */
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
