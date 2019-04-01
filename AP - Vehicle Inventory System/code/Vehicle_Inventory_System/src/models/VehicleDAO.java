@@ -1,10 +1,5 @@
 package models;
-/**
- * Establishes connection to the database and retrieves, updates or deletes data from the database.
- * 
- * @author Irfan_Hanafi
- *
- */
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -179,7 +174,7 @@ public class VehicleDAO {
 	public Boolean updateVehicle(Vehicle v, int vehicle_id) throws SQLException
 	{
 		Boolean attempt = false;
-		System.out.print("inserting vehicle...");
+		System.out.print("Updating vehicle...");
 		Connection dbConnection = null;
 		Statement statement = null;
 		String query = "UPDATE vehicles "

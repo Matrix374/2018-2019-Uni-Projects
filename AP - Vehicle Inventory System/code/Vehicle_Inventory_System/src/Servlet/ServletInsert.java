@@ -1,9 +1,5 @@
 package Servlet;
-/*
- * This is where Vehicle Insertion through the website is made
- * 
- * @author Irfan_Hanafi
- */
+
 import java.io.IOException;
 import java.sql.SQLException;
 
