@@ -1,5 +1,9 @@
 package Servlet;
-
+/*
+ * Where you can change the details of an existing vehicle
+ * 
+ * @author Irfan_Hanafi
+ */
 import java.io.IOException;
 import java.sql.SQLException;
 
