@@ -1,0 +1,18 @@
+Plan
+-Create GUI
+Specifications:
+1.Load Text Data File
+2.Manually Edit Company Information
+3.Display the Number of Companies within the three and the depth
+4.Remove a Company
+5.Display all Companies in Alphabetic Order
+6.a)Search for a Company
+  b)Partial Keyword Search
+7.Search for and Display Trading Partners
+8.Display the Company with biggest Potential for Trade
+
+Investigation Plan
+1.How to load text data file through GUI? (Browser Search)
+2.How to display tree and select companies
+3.Partial Keyword Search
+4.What does biggest potential for trade mean?

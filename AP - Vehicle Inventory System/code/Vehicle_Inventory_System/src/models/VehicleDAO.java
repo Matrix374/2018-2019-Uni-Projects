@@ -151,7 +151,7 @@ public class VehicleDAO {
 	public Boolean insertVehicle(Vehicle v) throws SQLException
 	{
 		Boolean attempt = false;
-		System.out.print("inserting vehicle...");
+		System.out.print("Inserting vehicle...");
 		Connection dbConnection = null;
 		Statement statement = null;
 		String query = "INSERT INTO vehicles(make, model, year, price, "
@@ -179,7 +179,7 @@ public class VehicleDAO {
 	public Boolean updateVehicle(Vehicle v, int vehicle_id) throws SQLException
 	{
 		Boolean attempt = false;
-		System.out.print("inserting vehicle...");
+		System.out.print("Updating vehicle...");
 		Connection dbConnection = null;
 		Statement statement = null;
 		String query = "UPDATE vehicles "
