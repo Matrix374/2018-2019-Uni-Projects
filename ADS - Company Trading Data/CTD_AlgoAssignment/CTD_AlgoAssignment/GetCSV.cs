@@ -26,7 +26,16 @@ namespace CTD_AlgoAssignment
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(',');
-                    var buyers = values[5].Split(';'); //Need to Break this into just the name, isolate [] and ;
+
+                    var charsToRemove = new string[] { "[", "]" };
+
+                    foreach (string brackets in charsToRemove)
+                    {
+                        values[5] = values[5].Replace(brackets, string.Empty);
+                    }
+
+                    var buyers = values[5].Split(';');
+
                     b = new ArrayList(buyers);
 
                     if (i > 0)
