@@ -23,3 +23,6 @@ Display one company at a time
 Button will go to previous or next Company(using index increment and decrement)
 Will have search functionality
 AVLTree is just how the data is organized behind the scenes
+
+AVLTree
+-Weightage would be alphabet?
