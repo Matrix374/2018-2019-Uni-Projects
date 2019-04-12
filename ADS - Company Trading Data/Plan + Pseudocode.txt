@@ -1,7 +1,7 @@
 Plan
 -Create GUI
 Specifications:
-1.Load Text Data File
+1.Load Text Data File (Partially Done: Browser Search needed + Buyers);
 2.Manually Edit Company Information
 3.Display the Number of Companies within the three and the depth
 4.Remove a Company
@@ -16,3 +16,4 @@ Investigation Plan
 2.How to display tree and select companies
 3.Partial Keyword Search
 4.What does biggest potential for trade mean?
+5.How to find Companies from Buyers (Something similar to graphs where it finds a Node that has a matching ID)

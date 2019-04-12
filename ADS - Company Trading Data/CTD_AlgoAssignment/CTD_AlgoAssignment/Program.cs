@@ -21,14 +21,11 @@ namespace CTD_AlgoAssignment
             Company wlm = new Company("WLM", 0, 0, 0, 0, null);
 
             GetCSV csv = new GetCSV("C:\\Users\\Chad\\Documents\\GitHub\\2018-Uni-Projects\\ADS - Company Trading Data\\companies.csv");
-
-            ArrayList buyer = new ArrayList();
-            buyer.Add(mst);
-            buyer.Add(wlm);
-
-            Company amx = new Company("AMX", 3033, 4106, 131330, 570000, buyer);
-
-            Debug.WriteLine(amx);
+            Debug.WriteLine("All Companies");
+            foreach (Company c in csv.AllCompanies)
+            {
+                Debug.WriteLine(c + "\n");
+            }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

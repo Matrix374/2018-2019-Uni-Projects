@@ -39,9 +39,9 @@ namespace CTD_AlgoAssignment
                 "NumEmployees : " + NumEmployees + "\n" +
                 "Buyer: ";
 
-            foreach(Company b in Buyer)
+            foreach(string b in Buyer)
             {
-                value += b.Name + ", ";
+                value += b + ", ";
             }
 
             return value;
