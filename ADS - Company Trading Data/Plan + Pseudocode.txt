@@ -17,3 +17,9 @@ Investigation Plan
 3.Partial Keyword Search
 4.What does biggest potential for trade mean?
 5.How to find Companies from Buyers (Something similar to graphs where it finds a Node that has a matching ID)
+
+GUI-
+Display one company at a time
+Button will go to previous or next Company(using index increment and decrement)
+Will have search functionality
+AVLTree is just how the data is organized behind the scenes
