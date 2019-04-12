@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,9 @@ namespace CTD_AlgoAssignment
     {
         string name;
         int netIncome, opIncome, totalAssets, numEmployees;
-        List<Company> buyer; //Different Data Structure, Linked List? AVLTree? Graphs?
+        ArrayList buyer = new ArrayList();
 
-        public Company(string name, int netIncome, int opIncome, int totalAssets, int numEmployees, List<Company> buyer)
+        public Company(string name, int netIncome, int opIncome, int totalAssets, int numEmployees, ArrayList buyer)
         {
             Name = name;
             NetIncome = netIncome;
@@ -27,16 +28,23 @@ namespace CTD_AlgoAssignment
         public int OpIncome { get => opIncome; set => opIncome = value; }
         public int TotalAssets { get => totalAssets; set => totalAssets = value; }
         public int NumEmployees { get => numEmployees; set => numEmployees = value; }
-        internal List<Company> Buyer { get => buyer; set => buyer = value; }
+        public ArrayList Buyer { get => buyer; set => buyer = value; }
 
         public override string ToString()
         {
-            return "Company : " + Name + "\n" +
+            string value = "Company : " + Name + "\n" +
                 "Net Income : " + NetIncome + "\n" +
                 "Operating Income : " + OpIncome + "\n" +
                 "Total Assets : " + TotalAssets + "\n" +
                 "NumEmployees : " + NumEmployees + "\n" +
-                "Buyers : " + Buyer + "\n";
+                "Buyer: ";
+
+            foreach(Company b in Buyer)
+            {
+                value += b.Name + ", ";
+            }
+
+            return value;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -19,7 +20,9 @@ namespace CTD_AlgoAssignment
             Company mst = new Company("MST", 0, 0, 0, 0, null);
             Company wlm = new Company("WLM", 0, 0, 0, 0, null);
 
-            List<Company> buyer = new List<Company>();
+            GetCSV csv = new GetCSV("C:\\Users\\Chad\\Documents\\GitHub\\2018-Uni-Projects\\ADS - Company Trading Data\\companies.csv");
+
+            ArrayList buyer = new ArrayList();
             buyer.Add(mst);
             buyer.Add(wlm);
 
