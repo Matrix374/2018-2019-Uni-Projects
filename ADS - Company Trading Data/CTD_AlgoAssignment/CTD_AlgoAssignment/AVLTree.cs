@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CTD_AlgoAssignment
 {
-    class AVLTree<T> : BSTree<T> where T : IComparable
+    class AVLTree<Company> : BSTree<Company>
     {
         public new void InsertItem(T item)
         {
