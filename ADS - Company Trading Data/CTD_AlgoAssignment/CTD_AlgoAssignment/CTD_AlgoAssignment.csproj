@@ -46,9 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AVLTree.cs" />
-    <Compile Include="BinTree.cs" />
-    <Compile Include="BSTree.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
