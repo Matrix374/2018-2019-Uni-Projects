@@ -1,9 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
 
 namespace CTD_AlgoAssignment
 {
-    class BSTree<T> : BinTree<T> where T : Component
+    class BSTree<T> : BinTree<T> where T : IComparable
     {
         public BSTree()
         {

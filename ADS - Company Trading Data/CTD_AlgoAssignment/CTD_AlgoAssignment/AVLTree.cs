@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CTD_AlgoAssignment
 {
-    class AVLTree<T> : BSTree<T> where T : Component
+    class AVLTree<T> : BSTree<T> where T : IComparable
     {
         public new void InsertItem(T item)
         {
