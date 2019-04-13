@@ -1,3 +1,19 @@
+To-Do
+Create GUI
+2.Manually Edit Company Information
+4.Remove a Company
+6.a)Search for a Company
+  b)Partial Keyword Search
+7.Search for and Display Trading Partners
+8.Display the Company with biggest Potential for Trade
+
+Pending
+
+Completed
+1.Load Text Data File
+3.Display the Number of Companies within the three and the depth
+5.Display all Companies in Alphabetic Order
+
 Plan
 -Create GUI
 Specifications:
@@ -8,6 +24,7 @@ Specifications:
 5.Display all Companies in Alphabetic Order
 6.a)Search for a Company
   b)Partial Keyword Search
+	-Can be done by checking the length of the search word and result word (Search: A checks for A in results[0])
 7.Search for and Display Trading Partners
 8.Display the Company with biggest Potential for Trade
 
@@ -26,8 +43,3 @@ AVLTree is just how the data is organized behind the scenes
 
 AVLTree
 -Weightage would be alphabet?
-Problem:
--Can't use Company as type for AVLTree
-
-Dictionary
--What can I use it for
