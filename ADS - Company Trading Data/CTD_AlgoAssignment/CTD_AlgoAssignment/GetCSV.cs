@@ -11,7 +11,7 @@ namespace CTD_AlgoAssignment
 {
     class GetCSV
     {
-        ArrayList allCompanies = new ArrayList();
+        ArrayList allCompanies = new ArrayList(); //Instead of Arraylist maybe put it inside a Hashtable or Graph
 
         public GetCSV(string directory)
         {
