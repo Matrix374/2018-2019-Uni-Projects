@@ -26,3 +26,8 @@ AVLTree is just how the data is organized behind the scenes
 
 AVLTree
 -Weightage would be alphabet?
+Problem:
+-Can't use Company as type for AVLTree
+
+Dictionary
+-What can I use it for

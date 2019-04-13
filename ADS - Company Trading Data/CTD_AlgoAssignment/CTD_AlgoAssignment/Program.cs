@@ -16,15 +16,24 @@ namespace CTD_AlgoAssignment
         [STAThread]
         static void Main()
         {
-            AVLTree<Company> compTree = new AVLTree<Company>();
+            AVLTree<string> compTree = new AVLTree<string>();
+            Dictionary<String, Company> compDict = new Dictionary<string, Company>();
 
             GetCSV csv = new GetCSV("C:\\Users\\Chad\\Documents\\GitHub\\2018-Uni-Projects\\ADS - Company Trading Data\\companies.csv");
-            Debug.WriteLine("All Companies");
             foreach (Company c in csv.AllCompanies)
             {
-                Debug.WriteLine(c + "\n");
-                compTree.InsertItem(c);
+                compTree.InsertItem(c.Name);
+                compDict.Add(c.Name, c);
             }
+
+            string output = null;
+            compTree.InOrder(ref output); //Alphabetical
+
+            Debug.WriteLine("Amount of Companies: " + compTree.Count());
+            Debug.WriteLine("Tree Height: " + compTree.Height());
+            Debug.WriteLine("All Companies");
+            Debug.WriteLine(output);
+
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
