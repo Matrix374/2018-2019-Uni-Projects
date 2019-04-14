@@ -36,10 +36,14 @@
             this.pathSubmit = new System.Windows.Forms.Button();
             this.browseButton = new System.Windows.Forms.Button();
             this.sortButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchBox = new System.Windows.Forms.TextBox();
             this.companyDetails = new System.Windows.Forms.Label();
-            this.searchBox = new System.Windows.Forms.Button();
+            this.searchButton = new System.Windows.Forms.Button();
             this.searchLabel = new System.Windows.Forms.Label();
+            this.totalCompLabel = new System.Windows.Forms.Label();
+            this.treeHeightLabel = new System.Windows.Forms.Label();
+            this.editButton = new System.Windows.Forms.Button();
+            this.removeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // companyList
@@ -48,7 +52,7 @@
             listViewItem1});
             this.companyList.Location = new System.Drawing.Point(38, 42);
             this.companyList.Name = "companyList";
-            this.companyList.Size = new System.Drawing.Size(136, 333);
+            this.companyList.Size = new System.Drawing.Size(136, 276);
             this.companyList.TabIndex = 0;
             this.companyList.UseCompatibleStateImageBehavior = false;
             // 
@@ -107,12 +111,12 @@
             this.sortButton.UseVisualStyleBackColor = true;
             this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
             // 
-            // textBox1
+            // searchBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(193, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(337, 20);
-            this.textBox1.TabIndex = 8;
+            this.searchBox.Location = new System.Drawing.Point(193, 42);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(337, 20);
+            this.searchBox.TabIndex = 8;
             // 
             // companyDetails
             // 
@@ -123,14 +127,15 @@
             this.companyDetails.TabIndex = 4;
             this.companyDetails.Text = "Company Details";
             // 
-            // searchBox
+            // searchButton
             // 
-            this.searchBox.Location = new System.Drawing.Point(568, 42);
-            this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(75, 23);
-            this.searchBox.TabIndex = 9;
-            this.searchBox.Text = "Search";
-            this.searchBox.UseVisualStyleBackColor = true;
+            this.searchButton.Location = new System.Drawing.Point(553, 42);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(75, 23);
+            this.searchButton.TabIndex = 9;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // searchLabel
             // 
@@ -141,14 +146,55 @@
             this.searchLabel.TabIndex = 10;
             this.searchLabel.Text = "Find Companies";
             // 
+            // totalCompLabel
+            // 
+            this.totalCompLabel.AutoSize = true;
+            this.totalCompLabel.Location = new System.Drawing.Point(38, 330);
+            this.totalCompLabel.Name = "totalCompLabel";
+            this.totalCompLabel.Size = new System.Drawing.Size(92, 13);
+            this.totalCompLabel.TabIndex = 11;
+            this.totalCompLabel.Text = "Total Companies :";
+            // 
+            // treeHeightLabel
+            // 
+            this.treeHeightLabel.AutoSize = true;
+            this.treeHeightLabel.Location = new System.Drawing.Point(38, 352);
+            this.treeHeightLabel.Name = "treeHeightLabel";
+            this.treeHeightLabel.Size = new System.Drawing.Size(69, 13);
+            this.treeHeightLabel.TabIndex = 12;
+            this.treeHeightLabel.Text = "Tree Height :";
+            // 
+            // editButton
+            // 
+            this.editButton.Location = new System.Drawing.Point(553, 71);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(75, 23);
+            this.editButton.TabIndex = 13;
+            this.editButton.Text = "Edit";
+            this.editButton.UseVisualStyleBackColor = true;
+            // 
+            // removeButton
+            // 
+            this.removeButton.Location = new System.Drawing.Point(553, 100);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(75, 23);
+            this.removeButton.TabIndex = 14;
+            this.removeButton.Text = "Remove";
+            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(773, 450);
+            this.Controls.Add(this.removeButton);
+            this.Controls.Add(this.editButton);
+            this.Controls.Add(this.treeHeightLabel);
+            this.Controls.Add(this.totalCompLabel);
             this.Controls.Add(this.searchLabel);
+            this.Controls.Add(this.searchButton);
             this.Controls.Add(this.searchBox);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.sortButton);
             this.Controls.Add(this.browseButton);
             this.Controls.Add(this.pathSubmit);
@@ -173,10 +219,14 @@
         private System.Windows.Forms.Button pathSubmit;
         private System.Windows.Forms.Button browseButton;
         private System.Windows.Forms.Button sortButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Label companyDetails;
-        private System.Windows.Forms.Button searchBox;
+        private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label searchLabel;
+        private System.Windows.Forms.Label totalCompLabel;
+        private System.Windows.Forms.Label treeHeightLabel;
+        private System.Windows.Forms.Button editButton;
+        private System.Windows.Forms.Button removeButton;
     }
 }
 

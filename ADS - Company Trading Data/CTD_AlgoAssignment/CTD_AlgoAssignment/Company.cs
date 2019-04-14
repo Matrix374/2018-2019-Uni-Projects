@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CTD_AlgoAssignment
 {
-    class Company
+    class Company : IComparable
     {
         string name;
         int netIncome, opIncome, totalAssets, numEmployees;
@@ -29,6 +29,12 @@ namespace CTD_AlgoAssignment
         public int TotalAssets { get => totalAssets; set => totalAssets = value; }
         public int NumEmployees { get => numEmployees; set => numEmployees = value; }
         public ArrayList Buyer { get => buyer; set => buyer = value; }
+
+        public int CompareTo(object obj)
+        {
+            Company other = (Company)obj;
+            return this.Name.CompareTo(other.Name);
+        }
 
         public override string ToString()
         {

@@ -95,6 +95,33 @@ namespace CTD_AlgoAssignment
             return result;
         }
 
+        public Node<T> GetNode(T item)
+        {
+            Node<T> result = null;
+
+            result = getNode(item, ref result, root);
+
+            return result;
+        }
+
+        private Node<T> getNode(T item, ref Node<T> result, Node<T> tree)
+        {
+            if (tree != null)
+            {
+
+                if (item.CompareTo(tree.Data) < 0)
+                    getNode(item, ref result, tree.Left);
+                else if (item.CompareTo(tree.Data) > 0)
+                    getNode(item, ref result, tree.Right);
+
+                if (tree.Data.CompareTo(item) == 0)
+                {
+                    result = tree;
+                }
+            }
+            return result;
+        }
+
         public void RemoveItem(T item)
         {
             RemoveItem(item, ref root);

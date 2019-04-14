@@ -14,8 +14,7 @@ namespace CTD_AlgoAssignment
 {
     public partial class Form1 : Form
     {
-        AVLTree<string> compTree = new AVLTree<string>();
-        Dictionary<String, Company> compDict = new Dictionary<string, Company>();
+        AVLTree<Company> compTree = new AVLTree<Company>();
 
         public Form1()
         {
@@ -48,17 +47,11 @@ namespace CTD_AlgoAssignment
                 foreach (Company c in csv.AllCompanies)
                 {
                     companyList.Items.Add(c.Name);
-                    compTree.InsertItem(c.Name);
-                    compDict.Add(c.Name, c);
+                    compTree.InsertItem(c);
                 }
 
-                string output = null;
-                compTree.InOrder(ref output); //Alphabetical
-
-                Debug.WriteLine("Amount of Companies: " + compTree.Count());
-                Debug.WriteLine("Tree Height: " + compTree.Height());
-                Debug.WriteLine("All Companies");
-                Debug.WriteLine(output);
+                totalCompLabel.Text = "Total Companies : " + compTree.Count();
+                treeHeightLabel.Text = "Tree Height : " + compTree.Height();
             }
             catch (Exception)
             {
@@ -85,6 +78,36 @@ namespace CTD_AlgoAssignment
                 companyList.Refresh();
                 select = true;
             }
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            Company search = new Company(searchBox.Text, 0, 0, 0, 0, null);
+            if (compTree.Contains(search))
+            {
+                Node<Company> result = compTree.GetNode(search);
+                companyName.Text = result.Data.Name;
+                companyDetails.Text = result.Data.ToString();
+            }
+            else
+            {
+                searchBox.Text += " not found";
+            }
+        }
+
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            Company search = new Company(companyName.Text, 0, 0, 0, 0, null);
+            Node<Company> result = compTree.GetNode(search);
+            compTree.RemoveItem(result.Data);
+
+            string output = null;
+            compTree.InOrder(ref output);
+
+            Debug.WriteLine(output);
+
+            companyList.Items.RemoveByKey(result.Data.Name);
+            companyList.Refresh();
         }
     }
 }
