@@ -10,6 +10,7 @@ Create GUI
 Pending
 
 Completed
+File Browser through GUI
 1.Load Text Data File
 3.Display the Number of Companies within the three and the depth
 5.Display all Companies in Alphabetic Order
