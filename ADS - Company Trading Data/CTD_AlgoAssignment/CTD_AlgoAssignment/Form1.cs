@@ -46,9 +46,11 @@ namespace CTD_AlgoAssignment
                 GetCSV csv = new GetCSV(pathText.Text);
                 foreach (Company c in csv.AllCompanies)
                 {
-                    companyList.Items.Add(c.Name);
+                    companyList.Items.Add(c.Name, c.Name, c.Name); //Flawed Implementation Maybe
                     compTree.InsertItem(c);
                 }
+
+                companyList.FullRowSelect = true;
 
                 totalCompLabel.Text = "Total Companies : " + compTree.Count();
                 treeHeightLabel.Text = "Tree Height : " + compTree.Height();
@@ -99,15 +101,43 @@ namespace CTD_AlgoAssignment
         {
             Company search = new Company(companyName.Text, 0, 0, 0, 0, null);
             Node<Company> result = compTree.GetNode(search);
-            compTree.RemoveItem(result.Data);
 
-            string output = null;
-            compTree.InOrder(ref output);
+            if (result != null)
+            {
+                compTree.RemoveItem(result.Data);
 
-            Debug.WriteLine(output);
+                companyList.Items.RemoveByKey(result.Data.Name);
+                companyList.Refresh();
 
-            companyList.Items.RemoveByKey(result.Data.Name);
-            companyList.Refresh();
+                companyName.Text = "Company Name";
+                companyDetails.Text = "Company Details";
+
+                searchBox.Text = "";
+                totalCompLabel.Text = "Total Companies : " + compTree.Count();
+                treeHeightLabel.Text = "Tree Height : " + compTree.Height();
+            }
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void companyList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (companyList.SelectedItems.Count > 0)
+            {
+                string name = companyList.SelectedItems[index: 0].Text;
+
+                Company search = new Company(name, 0, 0, 0, 0, null);
+                Node<Company> result = compTree.GetNode(search);
+
+                if (result != null)
+                {
+                    companyName.Text = result.Data.Name;
+                    companyDetails.Text = result.Data.ToString();
+                }
+            }
         }
     }
 }

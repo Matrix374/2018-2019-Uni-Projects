@@ -48,6 +48,7 @@
             // 
             // companyList
             // 
+            this.companyList.GridLines = true;
             this.companyList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
             this.companyList.Location = new System.Drawing.Point(38, 42);
@@ -55,6 +56,7 @@
             this.companyList.Size = new System.Drawing.Size(136, 276);
             this.companyList.TabIndex = 0;
             this.companyList.UseCompatibleStateImageBehavior = false;
+            this.companyList.SelectedIndexChanged += new System.EventHandler(this.companyList_SelectedIndexChanged);
             // 
             // pathText
             // 
@@ -172,6 +174,7 @@
             this.editButton.TabIndex = 13;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // removeButton
             // 
