@@ -1,13 +1,12 @@
 To-Do
 Create GUI
 2.Manually Edit Company Information
-4.Remove a Company
 6.b)Partial Keyword Search
-7.Search for and Display Trading Partners
 8.Display the Company with biggest Potential for Trade
 
 Pending
 -AVLTree (Currently using Dictionary, AVLTree only holds names of companies)
+4.Remove a Company
 
 Completed
 File Browser through GUI
@@ -15,6 +14,7 @@ File Browser through GUI
 3.Display the Number of Companies within the three and the depth
 5.Display all Companies in Alphabetic Order
 6.a)Search for a Company
+7.Search for and Display Trading Partners
 
 Plan
 -Create GUI

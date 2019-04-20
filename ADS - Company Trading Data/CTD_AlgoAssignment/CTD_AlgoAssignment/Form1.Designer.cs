@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.companyList = new System.Windows.Forms.ListView();
             this.pathText = new System.Windows.Forms.TextBox();
             this.pathLabel = new System.Windows.Forms.Label();
@@ -37,13 +38,18 @@
             this.browseButton = new System.Windows.Forms.Button();
             this.sortButton = new System.Windows.Forms.Button();
             this.searchBox = new System.Windows.Forms.TextBox();
-            this.companyDetails = new System.Windows.Forms.Label();
+            this.netIncomeLabel = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
             this.searchLabel = new System.Windows.Forms.Label();
             this.totalCompLabel = new System.Windows.Forms.Label();
             this.treeHeightLabel = new System.Windows.Forms.Label();
             this.editButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
+            this.opIncomeLabel = new System.Windows.Forms.Label();
+            this.totalAssetsLabel = new System.Windows.Forms.Label();
+            this.numEmployeesLabel = new System.Windows.Forms.Label();
+            this.buyLabel = new System.Windows.Forms.Label();
+            this.buyList = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // companyList
@@ -77,7 +83,7 @@
             // companyName
             // 
             this.companyName.AutoSize = true;
-            this.companyName.Location = new System.Drawing.Point(190, 78);
+            this.companyName.Location = new System.Drawing.Point(190, 81);
             this.companyName.Name = "companyName";
             this.companyName.Size = new System.Drawing.Size(82, 13);
             this.companyName.TabIndex = 3;
@@ -120,14 +126,14 @@
             this.searchBox.Size = new System.Drawing.Size(337, 20);
             this.searchBox.TabIndex = 8;
             // 
-            // companyDetails
+            // netIncomeLabel
             // 
-            this.companyDetails.AutoSize = true;
-            this.companyDetails.Location = new System.Drawing.Point(190, 100);
-            this.companyDetails.Name = "companyDetails";
-            this.companyDetails.Size = new System.Drawing.Size(86, 13);
-            this.companyDetails.TabIndex = 4;
-            this.companyDetails.Text = "Company Details";
+            this.netIncomeLabel.AutoSize = true;
+            this.netIncomeLabel.Location = new System.Drawing.Point(190, 105);
+            this.netIncomeLabel.Name = "netIncomeLabel";
+            this.netIncomeLabel.Size = new System.Drawing.Size(71, 13);
+            this.netIncomeLabel.TabIndex = 4;
+            this.netIncomeLabel.Text = "Net Income : ";
             // 
             // searchButton
             // 
@@ -186,11 +192,64 @@
             this.removeButton.UseVisualStyleBackColor = true;
             this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
+            // opIncomeLabel
+            // 
+            this.opIncomeLabel.AutoSize = true;
+            this.opIncomeLabel.Location = new System.Drawing.Point(190, 127);
+            this.opIncomeLabel.Name = "opIncomeLabel";
+            this.opIncomeLabel.Size = new System.Drawing.Size(97, 13);
+            this.opIncomeLabel.TabIndex = 15;
+            this.opIncomeLabel.Text = "Operating Income :";
+            // 
+            // totalAssetsLabel
+            // 
+            this.totalAssetsLabel.AutoSize = true;
+            this.totalAssetsLabel.Location = new System.Drawing.Point(190, 152);
+            this.totalAssetsLabel.Name = "totalAssetsLabel";
+            this.totalAssetsLabel.Size = new System.Drawing.Size(71, 13);
+            this.totalAssetsLabel.TabIndex = 16;
+            this.totalAssetsLabel.Text = "Total Assets :";
+            // 
+            // numEmployeesLabel
+            // 
+            this.numEmployeesLabel.AutoSize = true;
+            this.numEmployeesLabel.Location = new System.Drawing.Point(190, 176);
+            this.numEmployeesLabel.Name = "numEmployeesLabel";
+            this.numEmployeesLabel.Size = new System.Drawing.Size(116, 13);
+            this.numEmployeesLabel.TabIndex = 17;
+            this.numEmployeesLabel.Text = "Number of Employees :";
+            // 
+            // buyLabel
+            // 
+            this.buyLabel.AutoSize = true;
+            this.buyLabel.Location = new System.Drawing.Point(190, 200);
+            this.buyLabel.Name = "buyLabel";
+            this.buyLabel.Size = new System.Drawing.Size(40, 13);
+            this.buyLabel.TabIndex = 18;
+            this.buyLabel.Text = "Buyer :";
+            // 
+            // buyList
+            // 
+            this.buyList.GridLines = true;
+            this.buyList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem2});
+            this.buyList.Location = new System.Drawing.Point(193, 222);
+            this.buyList.Name = "buyList";
+            this.buyList.Size = new System.Drawing.Size(196, 96);
+            this.buyList.TabIndex = 19;
+            this.buyList.UseCompatibleStateImageBehavior = false;
+            this.buyList.SelectedIndexChanged += new System.EventHandler(this.buyList_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(773, 450);
+            this.Controls.Add(this.buyList);
+            this.Controls.Add(this.buyLabel);
+            this.Controls.Add(this.numEmployeesLabel);
+            this.Controls.Add(this.totalAssetsLabel);
+            this.Controls.Add(this.opIncomeLabel);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.treeHeightLabel);
@@ -201,7 +260,7 @@
             this.Controls.Add(this.sortButton);
             this.Controls.Add(this.browseButton);
             this.Controls.Add(this.pathSubmit);
-            this.Controls.Add(this.companyDetails);
+            this.Controls.Add(this.netIncomeLabel);
             this.Controls.Add(this.companyName);
             this.Controls.Add(this.pathLabel);
             this.Controls.Add(this.pathText);
@@ -223,13 +282,18 @@
         private System.Windows.Forms.Button browseButton;
         private System.Windows.Forms.Button sortButton;
         private System.Windows.Forms.TextBox searchBox;
-        private System.Windows.Forms.Label companyDetails;
+        private System.Windows.Forms.Label netIncomeLabel;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label searchLabel;
         private System.Windows.Forms.Label totalCompLabel;
         private System.Windows.Forms.Label treeHeightLabel;
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.Button removeButton;
+        private System.Windows.Forms.Label opIncomeLabel;
+        private System.Windows.Forms.Label totalAssetsLabel;
+        private System.Windows.Forms.Label numEmployeesLabel;
+        private System.Windows.Forms.Label buyLabel;
+        private System.Windows.Forms.ListView buyList;
     }
 }
 

@@ -15,6 +15,7 @@ namespace CTD_AlgoAssignment
     public partial class Form1 : Form
     {
         AVLTree<Company> compTree = new AVLTree<Company>();
+        Label[] buyer;
 
         public Form1()
         {
@@ -41,6 +42,14 @@ namespace CTD_AlgoAssignment
 
         private void pathSubmit_Click(object sender, EventArgs e)
         {
+
+            if(companyList != null)
+            {
+                companyList.Clear();
+                companyList.Refresh();
+                buyList.Clear();
+                buyList.Refresh();
+            }
             try
             {
                 GetCSV csv = new GetCSV(pathText.Text);
@@ -84,12 +93,25 @@ namespace CTD_AlgoAssignment
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            buyList.Clear();
+            buyList.Refresh();
             Company search = new Company(searchBox.Text, 0, 0, 0, 0, null);
             if (compTree.Contains(search))
             {
                 Node<Company> result = compTree.GetNode(search);
                 companyName.Text = result.Data.Name;
-                companyDetails.Text = result.Data.ToString();
+                netIncomeLabel.Text = "Net Income : " + Convert.ToString(result.Data.NetIncome);
+                opIncomeLabel.Text = "Operating Income : " + Convert.ToString(result.Data.OpIncome);
+                totalAssetsLabel.Text = "Total Assets : " + Convert.ToString(result.Data.TotalAssets);
+                numEmployeesLabel.Text = "Number of Employees : " + Convert.ToString(result.Data.NumEmployees);
+                buyLabel.Text = "Buyer : ";
+
+                foreach (string b in result.Data.Buyer)
+                {
+                    buyList.Items.Add(b);
+                }
+
+                buyList.Refresh();
             }
             else
             {
@@ -110,7 +132,7 @@ namespace CTD_AlgoAssignment
                 companyList.Refresh();
 
                 companyName.Text = "Company Name";
-                companyDetails.Text = "Company Details";
+                netIncomeLabel.Text = "Company Details";
 
                 searchBox.Text = "";
                 totalCompLabel.Text = "Total Companies : " + compTree.Count();
@@ -125,6 +147,8 @@ namespace CTD_AlgoAssignment
 
         private void companyList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            buyList.Clear();
+            buyList.Refresh();
             if (companyList.SelectedItems.Count > 0)
             {
                 string name = companyList.SelectedItems[index: 0].Text;
@@ -135,7 +159,48 @@ namespace CTD_AlgoAssignment
                 if (result != null)
                 {
                     companyName.Text = result.Data.Name;
-                    companyDetails.Text = result.Data.ToString();
+                    netIncomeLabel.Text = "Net Income : " + Convert.ToString(result.Data.NetIncome);
+                    opIncomeLabel.Text = "Operating Income : " + Convert.ToString(result.Data.OpIncome);
+                    totalAssetsLabel.Text = "Total Assets : " + Convert.ToString(result.Data.TotalAssets);
+                    numEmployeesLabel.Text = "Number of Employees : " + Convert.ToString(result.Data.NumEmployees);
+                    buyLabel.Text = "Buyer : ";
+
+                    foreach (string b in result.Data.Buyer)
+                    {
+                        buyList.Items.Add(b);
+                    }
+
+                    buyList.Refresh();
+                }
+            }
+        }
+
+        private void buyList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (buyList.SelectedItems.Count > 0)
+            {
+                string name = buyList.SelectedItems[index: 0].Text;
+
+                Company search = new Company(name, 0, 0, 0, 0, null);
+                Node<Company> result = compTree.GetNode(search);
+
+                if (result != null)
+                {
+                    companyName.Text = result.Data.Name;
+                    netIncomeLabel.Text = "Net Income : " + Convert.ToString(result.Data.NetIncome);
+                    opIncomeLabel.Text = "Operating Income : " + Convert.ToString(result.Data.OpIncome);
+                    totalAssetsLabel.Text = "Total Assets : " + Convert.ToString(result.Data.TotalAssets);
+                    numEmployeesLabel.Text = "Number of Employees : " + Convert.ToString(result.Data.NumEmployees);
+                    buyLabel.Text = "Buyer : ";
+
+                    buyList.Clear();
+
+                    foreach (string b in result.Data.Buyer)
+                    {
+                        buyList.Items.Add(b);
+                    }
+
+                    buyList.Refresh();
                 }
             }
         }

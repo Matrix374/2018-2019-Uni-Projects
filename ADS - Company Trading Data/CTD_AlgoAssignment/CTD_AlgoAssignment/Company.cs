@@ -33,7 +33,7 @@ namespace CTD_AlgoAssignment
         public int CompareTo(object obj)
         {
             Company other = (Company)obj;
-            return this.Name.CompareTo(other.Name);
+            return Name.CompareTo(other.Name);
         }
 
         public override string ToString()
