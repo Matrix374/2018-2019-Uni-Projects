@@ -132,7 +132,11 @@ namespace CTD_AlgoAssignment
                 companyList.Refresh();
 
                 companyName.Text = "Company Name";
-                netIncomeLabel.Text = "Company Details";
+                netIncomeLabel.Text = "Net Income : ";
+                opIncomeLabel.Text = "Operating Income : ";
+                totalAssetsLabel.Text = "Total Assets : ";
+                numEmployeesLabel.Text = "Number of Employees : ";
+                buyLabel.Text = "Buyer : ";
 
                 searchBox.Text = "";
                 totalCompLabel.Text = "Total Companies : " + compTree.Count();

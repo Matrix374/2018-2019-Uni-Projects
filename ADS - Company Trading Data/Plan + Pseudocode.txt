@@ -6,7 +6,7 @@ Create GUI
 
 Pending
 -AVLTree (Currently using Dictionary, AVLTree only holds names of companies)
-4.Remove a Company
+4.Remove a Company (Trying to remove BGR keeps removing BRG from the ListView)
 
 Completed
 File Browser through GUI
