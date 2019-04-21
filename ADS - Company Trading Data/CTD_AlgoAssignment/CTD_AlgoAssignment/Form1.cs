@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -207,6 +208,33 @@ namespace CTD_AlgoAssignment
                     buyList.Refresh();
                 }
             }
+        }
+
+        private void tradeButton_Click(object sender, EventArgs e)
+        {
+            int tradePotential = 0;
+            string maxCompany = null;
+            ArrayList allCompanies = compTree.GetAll();
+            foreach(Company c in allCompanies)
+            {
+                int temp = 0;
+                foreach(string b in c.Buyer)
+                {
+                    Node<Company> tempComp;
+                    Company search = new Company(b, 0, 0, 0, 0, null);
+                    tempComp = compTree.GetNode(search);
+
+                    temp += tempComp.Data.NetIncome;
+                }
+
+                if(tradePotential < temp)
+                {
+                    tradePotential = temp;
+                    maxCompany = c.Name;
+                }
+            }
+
+            tradeLabel.Text = "Company with Biggest Potential is: " + maxCompany;
         }
     }
 }

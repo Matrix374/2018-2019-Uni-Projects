@@ -50,6 +50,8 @@
             this.numEmployeesLabel = new System.Windows.Forms.Label();
             this.buyLabel = new System.Windows.Forms.Label();
             this.buyList = new System.Windows.Forms.ListView();
+            this.tradeButton = new System.Windows.Forms.Button();
+            this.tradeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // companyList
@@ -240,11 +242,31 @@
             this.buyList.UseCompatibleStateImageBehavior = false;
             this.buyList.SelectedIndexChanged += new System.EventHandler(this.buyList_SelectedIndexChanged);
             // 
+            // tradeButton
+            // 
+            this.tradeButton.Location = new System.Drawing.Point(553, 129);
+            this.tradeButton.Name = "tradeButton";
+            this.tradeButton.Size = new System.Drawing.Size(75, 60);
+            this.tradeButton.TabIndex = 20;
+            this.tradeButton.Text = "Biggest Trade Potential";
+            this.tradeButton.UseVisualStyleBackColor = true;
+            this.tradeButton.Click += new System.EventHandler(this.tradeButton_Click);
+            // 
+            // tradeLabel
+            // 
+            this.tradeLabel.AutoSize = true;
+            this.tradeLabel.Location = new System.Drawing.Point(553, 200);
+            this.tradeLabel.Name = "tradeLabel";
+            this.tradeLabel.Size = new System.Drawing.Size(0, 13);
+            this.tradeLabel.TabIndex = 21;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(773, 450);
+            this.Controls.Add(this.tradeLabel);
+            this.Controls.Add(this.tradeButton);
             this.Controls.Add(this.buyList);
             this.Controls.Add(this.buyLabel);
             this.Controls.Add(this.numEmployeesLabel);
@@ -294,6 +316,8 @@
         private System.Windows.Forms.Label numEmployeesLabel;
         private System.Windows.Forms.Label buyLabel;
         private System.Windows.Forms.ListView buyList;
+        private System.Windows.Forms.Button tradeButton;
+        private System.Windows.Forms.Label tradeLabel;
     }
 }
 
