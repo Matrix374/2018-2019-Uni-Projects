@@ -59,5 +59,68 @@ namespace CTD_AlgoAssignment
             tree = newRoot;
 
         }
+
+        public new void RemoveItem(T item)
+        {
+            removeItem(item, ref root);
+        }
+
+        private void removeItem(T item, ref Node<T> tree)
+        {
+            if(tree != null)
+            {
+                if (item.CompareTo(tree.Data) < 0)
+                    removeItem(item, ref tree.Left);
+                else if (item.CompareTo(tree.Data) > 0)
+                    removeItem(item, ref tree.Right);
+                else if (tree.Data.CompareTo(item) == 0)
+                {
+                    if (tree.Left == null && tree.Right == null)
+                        tree = null;
+                    else if (tree.Left == null && tree.Right != null)
+                        tree = tree.Right;
+                    else if (tree.Right == null && tree.Left != null)
+                        tree = tree.Left;
+                    else if (tree.Right != null && tree.Left != null)
+                    {
+                        T newRoot = leastItem(tree.Right);
+                        tree.Data = newRoot;
+                        removeItem(newRoot, ref tree.Right);
+                    }
+                }
+
+                if(tree!=null)
+                {
+                    if (tree.Left != null && tree.Right != null)
+                    {
+                        tree.BalanceFactor = height(tree.Left) - height(tree.Right);
+                        int balance = tree.BalanceFactor;
+
+                        if (balance >= 2)
+                            rotateRight(ref tree);
+
+                        if (balance <= -2)
+                            rotateLeft(ref tree);
+                    }
+                }
+            }
+        }
+
+        public new int Height()
+        {
+            int max = height(root);
+
+            return max;
+        }
+
+        protected int height(Node<T> tree)
+        {
+            if (tree == null)
+            {
+                return 0;
+            }
+
+            return 1 + Math.Max(height(tree.Right), height(tree.Left));
+        }
     }
 }
