@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 
 namespace CTD_AlgoAssignment
 {
@@ -121,26 +120,6 @@ namespace CTD_AlgoAssignment
                 }
             }
             return result;
-        }
-
-        public ArrayList GetAll()
-        {
-            ArrayList result = new ArrayList();
-
-            getAll(ref result, root);
-
-            return result;
-        }
-
-        private void getAll(ref ArrayList result, Node<T> tree)
-        {
-            if(tree != null)
-            {
-                result.Add(tree.Data);
-
-                getAll(ref result, tree.Left);
-                getAll(ref result, tree.Right);
-            }
         }
 
         public void RemoveItem(T item)

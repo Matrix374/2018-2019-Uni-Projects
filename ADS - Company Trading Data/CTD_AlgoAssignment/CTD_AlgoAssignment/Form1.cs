@@ -208,10 +208,5 @@ namespace CTD_AlgoAssignment
                 }
             }
         }
-
-        private void tradeLabel_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
