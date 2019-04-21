@@ -2,11 +2,11 @@ To-Do
 Create GUI
 2.Manually Edit Company Information
 6.b)Partial Keyword Search
-8.Display the Company with biggest Potential for Trade
 
 Pending
 -AVLTree (Currently using Dictionary, AVLTree only holds names of companies)
 4.Remove a Company (Trying to remove BGR keeps removing BRG from the ListView)
+8.Display the Company with biggest Potential for Trade
 
 Completed
 File Browser through GUI
