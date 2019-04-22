@@ -4,10 +4,10 @@ Create GUI
 6.b)Partial Keyword Search
 
 Pending
--AVLTree (Currently using Dictionary, AVLTree only holds names of companies)
-4.Remove a Company (Trying to remove BGR keeps removing BRG from the ListView)
-8.Display the Company with biggest Potential for Trade
-
+4.Remove a Company (Specific companies arent removed from ListView)
+8.Display the Company with biggest Potential for Trade (Buyers not deleted when a Company is removed)
+-When removing company check for company in the buyers of each Company
+-remove it from their Buyers list
 Completed
 File Browser through GUI
 1.Load Text Data File

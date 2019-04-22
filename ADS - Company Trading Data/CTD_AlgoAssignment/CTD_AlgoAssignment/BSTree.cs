@@ -174,6 +174,27 @@ namespace CTD_AlgoAssignment
             }
         }
 
+        public void EditNode(Node<T> target)
+        {
+            editNode(target, ref root);
+        }
+
+        private void editNode(Node<T> target,ref Node<T> tree)
+        {
+            if (tree != null)
+            {
+                if (target.Data.CompareTo(tree.Data) < 0)
+                    editNode(target, ref tree.Left);
+                else if (target.Data.CompareTo(tree.Data) > 0)
+                    editNode(target, ref tree.Right);
+
+                if(target.Data.CompareTo(tree.Data) == 0)
+                {
+                    tree.Data = target.Data;
+                }
+            }
+        }
+
         public T leastItem(Node<T> tree)
         {
             if (tree.Left == null)
