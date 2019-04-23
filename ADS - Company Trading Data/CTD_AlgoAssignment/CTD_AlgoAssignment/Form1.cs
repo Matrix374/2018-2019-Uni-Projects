@@ -124,13 +124,27 @@ namespace CTD_AlgoAssignment
         {
             Company search = new Company(companyName.Text, 0, 0, 0, 0, null);
             Node<Company> result = compTree.GetNode(search);
+            ArrayList allCompanies;
 
             if (result != null)
             {
+                allCompanies = compTree.GetAll();
+
+                //Removes CompanyToDelete from Buyers
+                foreach(Company c in allCompanies)
+                {
+                    c.Buyer.Remove(result.Data.Name);
+                    Node<Company> newNode = new Node<Company>(c);
+
+                    compTree.EditNode(newNode);
+                }
+
                 compTree.RemoveItem(result.Data);
 
                 companyList.Items.RemoveByKey(result.Data.Name);
                 companyList.Refresh();
+                buyList.Clear();
+                buyList.Refresh();
 
                 companyName.Text = "Company Name";
                 netIncomeLabel.Text = "Net Income : ";
@@ -234,7 +248,12 @@ namespace CTD_AlgoAssignment
                 }
             }
 
-            tradeLabel.Text = "Company with Biggest Potential is: " + maxCompany;
+            tradeLabel.Text = "Company with Biggest Potential is " + maxCompany + 
+                "\nTrade Potential : " + tradePotential;
+
+            searchBox.Text = maxCompany;
+
+            searchButton.PerformClick();
         }
     }
 }
