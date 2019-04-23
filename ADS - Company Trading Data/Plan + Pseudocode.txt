@@ -1,6 +1,5 @@
 To-Do
 2.Manually Edit Company Information
-6.b)Partial Keyword Search
 
 Pending
 GUI for Edit Company Information
@@ -12,6 +11,7 @@ File Browser through GUI
 3.Display the Number of Companies within the three and the depth
 5.Display all Companies in Alphabetic Order
 6.a)Search for a Company
+6.b)Partial Keyword Search (Not using Trees)
 7.Search for and Display Trading Partners
 8.Display the Company with biggest Potential for Trade
 

@@ -116,7 +116,42 @@ namespace CTD_AlgoAssignment
             }
             else
             {
-                searchBox.Text += " not found";
+                ArrayList result = new ArrayList();
+                ArrayList allCompanies;
+
+                allCompanies = compTree.GetAll();
+                Boolean match = false;
+
+                int n = searchBox.Text.Length;
+
+                //Partial Search
+                foreach (Company c in allCompanies)
+                {
+                    for (int i = 0; i < n; i++)
+                    {
+                        if (c.Name[i].CompareTo(searchBox.Text[i]) == 0)
+                            match = true;
+                        else
+                            match = false;
+                    }
+
+                    if (match)
+                    {
+                        result.Add(c);
+                    }
+                }
+
+                if (result.Count > 0)
+                {
+                    searchBox.Text = "";
+
+                    foreach (Company c in result)
+                    {
+                        searchBox.Text += c.Name + ",";
+                    }
+                }
+                else
+                    searchBox.Text += " Not found";
             }
         }
 
