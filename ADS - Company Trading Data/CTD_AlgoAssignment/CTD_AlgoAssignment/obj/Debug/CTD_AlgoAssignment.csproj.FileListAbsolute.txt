@@ -1,0 +1,10 @@
+C:\Users\Chad\Documents\GitHub\2018-Uni-Projects\ADS - Company Trading Data\CTD_AlgoAssignment\CTD_AlgoAssignment\bin\Debug\CTD_AlgoAssignment.exe.config
+C:\Users\Chad\Documents\GitHub\2018-Uni-Projects\ADS - Company Trading Data\CTD_AlgoAssignment\CTD_AlgoAssignment\bin\Debug\CTD_AlgoAssignment.exe
+C:\Users\Chad\Documents\GitHub\2018-Uni-Projects\ADS - Company Trading Data\CTD_AlgoAssignment\CTD_AlgoAssignment\bin\Debug\CTD_AlgoAssignment.pdb
+C:\Users\Chad\Documents\GitHub\2018-Uni-Projects\ADS - Company Trading Data\CTD_AlgoAssignment\CTD_AlgoAssignment\obj\Debug\CTD_AlgoAssignment.csprojAssemblyReference.cache
+C:\Users\Chad\Documents\GitHub\2018-Uni-Projects\ADS - Company Trading Data\CTD_AlgoAssignment\CTD_AlgoAssignment\obj\Debug\CTD_AlgoAssignment.Form1.resources
+C:\Users\Chad\Documents\GitHub\2018-Uni-Projects\ADS - Company Trading Data\CTD_AlgoAssignment\CTD_AlgoAssignment\obj\Debug\CTD_AlgoAssignment.Properties.Resources.resources
+C:\Users\Chad\Documents\GitHub\2018-Uni-Projects\ADS - Company Trading Data\CTD_AlgoAssignment\CTD_AlgoAssignment\obj\Debug\CTD_AlgoAssignment.csproj.GenerateResource.cache
+C:\Users\Chad\Documents\GitHub\2018-Uni-Projects\ADS - Company Trading Data\CTD_AlgoAssignment\CTD_AlgoAssignment\obj\Debug\CTD_AlgoAssignment.csproj.CoreCompileInputs.cache
+C:\Users\Chad\Documents\GitHub\2018-Uni-Projects\ADS - Company Trading Data\CTD_AlgoAssignment\CTD_AlgoAssignment\obj\Debug\CTD_AlgoAssignment.exe
+C:\Users\Chad\Documents\GitHub\2018-Uni-Projects\ADS - Company Trading Data\CTD_AlgoAssignment\CTD_AlgoAssignment\obj\Debug\CTD_AlgoAssignment.pdb
