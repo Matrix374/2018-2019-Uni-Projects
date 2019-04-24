@@ -1,13 +1,31 @@
+To-Do
+2.Manually Edit Company Information
+
+Pending
+GUI for Edit Company Information
+4.Remove a Company (Specific companies arent removed from ListView)
+
+Completed
+File Browser through GUI
+1.Load Text Data File
+3.Display the Number of Companies within the three and the depth
+5.Display all Companies in Alphabetic Order
+6.a)Search for a Company
+6.b)Partial Keyword Search (Not using Trees/ Not Possible with Trees/ AVLTrees Organized so search is already quick)
+7.Search for and Display Trading Partners
+8.Display the Company with biggest Potential for Trade
+
 Plan
 -Create GUI
 Specifications:
-1.Load Text Data File
+1.Load Text Data File (Partially Done: Browser Search needed + Buyers);
 2.Manually Edit Company Information
-3.Display the Number of Companies within the three and the depth
+3.Display the Number of Companies within the tree and the depth
 4.Remove a Company
 5.Display all Companies in Alphabetic Order
 6.a)Search for a Company
   b)Partial Keyword Search
+	-Can be done by checking the length of the search word and result word (Search: A checks for A in results[0])
 7.Search for and Display Trading Partners
 8.Display the Company with biggest Potential for Trade
 
@@ -16,3 +34,13 @@ Investigation Plan
 2.How to display tree and select companies
 3.Partial Keyword Search
 4.What does biggest potential for trade mean?
+5.How to find Companies from Buyers (Something similar to graphs where it finds a Node that has a matching ID)
+
+GUI-
+Display one company at a time
+Button will go to previous or next Company(using index increment and decrement)
+Will have search functionality
+AVLTree is just how the data is organized behind the scenes
+
+AVLTree
+-Weightage would be alphabet?
