@@ -17,6 +17,7 @@ namespace CTD_AlgoAssignment
     {
         AVLTree<Company> compTree = new AVLTree<Company>();
         Label[] buyer;
+        Boolean select = false;
 
         public Form1()
         {
@@ -70,9 +71,7 @@ namespace CTD_AlgoAssignment
                 Debug.WriteLine("Cannot Open File");
             }
         }
-
-        Boolean select = false;
-
+        
         private void sortButton_Click(object sender, EventArgs e)
         {
 
@@ -196,7 +195,47 @@ namespace CTD_AlgoAssignment
 
         private void editButton_Click(object sender, EventArgs e)
         {
+            Company search = new Company(companyName.Text, 0, 0, 0, 0, null);
+            Node<Company> result = compTree.GetNode(search);
 
+            string net = netIncomeBox.Text;
+            string op = opIncomeBox.Text;
+            string tot = totalAssetsBox.Text;
+            string emp = numEmployeesBox.Text;
+
+            if(net.Equals("") && op.Equals("") && tot.Equals("") && emp.Equals(""))
+            {
+                searchBox.Text = "No Edits Made";
+            }
+            else
+            {
+                int num = 0;
+                if (net.CompareTo("") != 0 && int.TryParse(net, out num))
+                {
+                    result.Data.NetIncome = num;
+                }
+
+                if (op.CompareTo("") != 0 && int.TryParse(op, out num))
+                {
+                    result.Data.OpIncome = num;
+                }
+
+                if (tot.CompareTo("") != 0 && int.TryParse(tot, out num))
+                {
+                    result.Data.TotalAssets = num;
+                }
+
+                if (emp.CompareTo("") != 0 && int.TryParse(emp, out num))
+                {
+                    result.Data.NumEmployees = num;
+                }
+
+                compTree.EditNode(result);
+
+                searchBox.Text = result.Data.Name;
+
+                searchButton.PerformClick();
+            }
         }
 
         private void companyList_SelectedIndexChanged(object sender, EventArgs e)

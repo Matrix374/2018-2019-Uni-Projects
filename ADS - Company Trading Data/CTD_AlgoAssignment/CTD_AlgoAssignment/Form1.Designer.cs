@@ -52,6 +52,10 @@
             this.buyList = new System.Windows.Forms.ListView();
             this.tradeButton = new System.Windows.Forms.Button();
             this.tradeLabel = new System.Windows.Forms.Label();
+            this.opIncomeBox = new System.Windows.Forms.TextBox();
+            this.totalAssetsBox = new System.Windows.Forms.TextBox();
+            this.netIncomeBox = new System.Windows.Forms.TextBox();
+            this.numEmployeesBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // companyList
@@ -260,11 +264,43 @@
             this.tradeLabel.Size = new System.Drawing.Size(0, 13);
             this.tradeLabel.TabIndex = 21;
             // 
+            // opIncomeBox
+            // 
+            this.opIncomeBox.Location = new System.Drawing.Point(390, 127);
+            this.opIncomeBox.Name = "opIncomeBox";
+            this.opIncomeBox.Size = new System.Drawing.Size(100, 20);
+            this.opIncomeBox.TabIndex = 22;
+            // 
+            // totalAssetsBox
+            // 
+            this.totalAssetsBox.Location = new System.Drawing.Point(390, 154);
+            this.totalAssetsBox.Name = "totalAssetsBox";
+            this.totalAssetsBox.Size = new System.Drawing.Size(100, 20);
+            this.totalAssetsBox.TabIndex = 23;
+            // 
+            // netIncomeBox
+            // 
+            this.netIncomeBox.Location = new System.Drawing.Point(390, 100);
+            this.netIncomeBox.Name = "netIncomeBox";
+            this.netIncomeBox.Size = new System.Drawing.Size(100, 20);
+            this.netIncomeBox.TabIndex = 24;
+            // 
+            // numEmployeesBox
+            // 
+            this.numEmployeesBox.Location = new System.Drawing.Point(390, 181);
+            this.numEmployeesBox.Name = "numEmployeesBox";
+            this.numEmployeesBox.Size = new System.Drawing.Size(100, 20);
+            this.numEmployeesBox.TabIndex = 25;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(773, 450);
+            this.Controls.Add(this.numEmployeesBox);
+            this.Controls.Add(this.netIncomeBox);
+            this.Controls.Add(this.totalAssetsBox);
+            this.Controls.Add(this.opIncomeBox);
             this.Controls.Add(this.tradeLabel);
             this.Controls.Add(this.tradeButton);
             this.Controls.Add(this.buyList);
@@ -318,6 +354,10 @@
         private System.Windows.Forms.ListView buyList;
         private System.Windows.Forms.Button tradeButton;
         private System.Windows.Forms.Label tradeLabel;
+        private System.Windows.Forms.TextBox opIncomeBox;
+        private System.Windows.Forms.TextBox totalAssetsBox;
+        private System.Windows.Forms.TextBox netIncomeBox;
+        private System.Windows.Forms.TextBox numEmployeesBox;
     }
 }
 
