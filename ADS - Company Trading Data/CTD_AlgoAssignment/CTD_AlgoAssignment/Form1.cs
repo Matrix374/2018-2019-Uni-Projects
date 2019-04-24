@@ -230,6 +230,11 @@ namespace CTD_AlgoAssignment
                     result.Data.NumEmployees = num;
                 }
 
+                netIncomeBox.Text = "";
+                opIncomeBox.Text = "";
+                totalAssetsBox.Text = "";
+                numEmployeesBox.Text = "";
+
                 compTree.EditNode(result);
 
                 searchBox.Text = result.Data.Name;
